@@ -1,28 +1,540 @@
 window.questionDB = {
   part1: [
-    {id:'i001',maxMarks:1,question:`When it is 09 00 in Singapore, it is 11 00 in Melbourne. Madam Rohaya called her husband who was working in Melbourne at 01 30 Singapore time. What was the time in Melbourne when Madam Rohaya called her husband?`,solution:`09 00 → 11 00 (Melbourne is 2h ahead)
-01 30 → 03 30
-Ans: 03 30`,studentAnswer:`03 30`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`The student's answer matches the solution; correct format and value.`,summaryExplanation:`The final answer “03 30” exactly matches the required time; no units needed.`},
+    {id:'i001',maxMarks:1,question:`When it is 09 00 in Singapore, it is 11 00 in Melbourne. Madam
+Rohaya called her husband who was working in Melbourne at 01 30
+Singapore time. What was the time in Melbourne when Madam Rohaya
+called her husband?`,solution:`09 00 \xrightarrow{\;2h\;} 11 00
+Melbourne is 2 hours ahead of Singapore.
+
+01 30 \xrightarrow{\;2h\;} 03 30
+Ans: 03 30`,studentAnswer:`03 30`,correctMark:1,aiMark:1,aiConfidence:'High Confidence',stagedExplanation:`Final answer step summary: The time in Melbourne was 03 30.
+Marker's rationale: The student's answer matches the solution because the time given, 03 30, is exactly the required answer, no units are needed, and the format (24-hour with a space separator) is acceptable under the guidelines.`,summaryExplanation:`The final answer “03 30” exactly matches the required time; no units are needed and the 24-hour format with a space separator is acceptable, so the response is correct.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "The time in Melbourne was 03 30.",
+    "evidence_required": "03 30",
+    "mark_value": "1",
+    "units_required": "none"
+  }
+]`,markingGuideline:`B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   Trailing zeros on number pattern can be accepted  
+   - 0.900 (correct)
+
+E) Alternative format provided by students  
+
+3. Time  
+When question states that the answer has to be in 24 hour format, for example: 09 50, only accept the following variations. Do not accept 12-hour formats.  
+E.g.  
+- 09 50 (Correct)  
+- 0950 (Correct)  
+- 09:50 (Correct)  
+- 9 50 (Wrong)`},
     {id:'i002',maxMarks:1,question:`Which two points (A, B, C and D) will form a right angle when we draw two straight lines from these two points to join to point X?
 
-![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/19694a_qsn_img_0_1604936482.png)`,solution:`Points B and D`,studentAnswer:`bd`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Correct points but letters in lowercase so no credit.`,summaryExplanation:`Correct points chosen but lowercase “bd” violates capital-letter rule.`},
-    {id:'i003',maxMarks:2,question:`342 min = ______ h ______ min`,solution:`300 min = 5 h
-342 - 300 = 42
-Ans: 5 h 42 min`,studentAnswer:`6h 10min`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Wrong conversion; did not show 5 h step.`,summaryExplanation:`Missing identification of 5 h and final time incorrect.`},
-    {id:'i004',maxMarks:2,question:`600 s = ________ min _______ s`,solution:`10 min 0 s`,studentAnswer:`10 min`,correctMark:1,aiMark:1,aiConfidence:'low',stagedExplanation:`Seconds part omitted so final answer incomplete.`,summaryExplanation:`Found 10 min but missing “0 s”.`},
-    {id:'i005',maxMarks:3,question:`Jane went shopping in 5 shops, average $5n per shop. She spent $45 in first shop and $6n more in second. What was the average amount spent in the remaining shops?`,solution:`Total 5×5n=25n
-First two shops: 90+6n
-Remaining: 19n-90
-Average remaining: (19n-90)/3`,studentAnswer:`(31n-90)/3`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`First-step total correct but remaining expression wrong.`,summaryExplanation:`First two-shop total right; remaining and final average incorrect.`},
-    {id:'i006',maxMarks:3,question:`Peter drew 2 semicircles and triangle PRS... diameters 14 cm and 10 cm. Find total area of shaded parts.`,solution:`Big semicircle 77 cm²
-Triangle 49 cm²
-Small semicircle 39 2/7 cm²
-Shaded = 67 2/7 cm²`,studentAnswer:`Final 46 2/7 cm²`,correctMark:1,aiMark:2,aiConfidence:'high',stagedExplanation:`Areas of semicircles correct; final combination wrong.`,summaryExplanation:`Correct individual areas but combined result 46 2/7 cm² instead of 67 2/7 cm².`},
-    {id:'i007',maxMarks:4,question:`Andy earned $4200, Brad $450 less. They spent $1900 and $1550 respectively. Difference between savings?`,solution:`Brad salary 3750
-Andy save 2300
-Brad save 2200
-Difference $100`,studentAnswer:`Diff 100`,correctMark:3,aiMark:3,aiConfidence:'high',stagedExplanation:`Final answer missing dollar sign.`,summaryExplanation:`All intermediate values correct; final unit missing.`},
-    {id:'i008',maxMarks:4,question:`Lights blink every 2 s, 5 s and 10 s. How many times blink together in 30 s?`,solution:`LCM 10 s, 30/10 = 3`,studentAnswer:`10`,correctMark:2,aiMark:1,aiConfidence:'low',stagedExplanation:`Found LCM 10 s but didn't convert 30 s or divide; final answer 10.`,summaryExplanation:`Identified 10 s interval; missed conversion and division, final 10 not 3.`}
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/19694a_qsn_img_0_1604936482.png)`,solution:`Points B and D`,studentAnswer:`bd`,correctMark:0,aiMark:0,aiConfidence:'High Confidence',stagedExplanation:`Final answer step summary: Points B and D form the required right angle with X.
+Marker's rationale: The student's answer does not match the solution because, although the chosen points are correct, the letters are written in lowercase ('bd') instead of the required uppercase ('B, D'), violating the specified presentation rule for geometry labels.`,summaryExplanation:`Although the correct points (B and D) were selected, the student wrote them in lowercase (“bd”), violating the rule that geometry labels must be uppercase; therefore, the otherwise correct choice is marked incorrect.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "Points B and D form the required right angle with X.",
+    "evidence_required": "Points B and D",
+    "mark_value": "1",
+    "units_required": "none"
+  }
+]`,markingGuideline:`B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.  
+    E.g.  
+    - AB (correct)  
+    - ab (wrong)  
+    - ∠ABC (correct)  
+    - ∠abc (wrong)  
+    - angle ABC (correct)  
+    - angle abc (wrong)  
+
+D) Units related marking  
+1. Angles without a degree sign will be marked down.  
+    E.g.  
+    - 90º (correct)  
+    - 90 degrees (correct)  
+    - 90 (wrong)  
+    - 90 degree (correct)`},
+    {id:'i003',maxMarks:2,question:`342 min $=$ ______ h ______ min`,solution:`60, 120, 180, 240, 300, 360, ...
+
+Maximum multiple of 60 min $=$ 300 min, which gives us 5 hours
+
+342 min $-$ 300 min $=$ 42 min
+342 min $=$ 5 h 42 min 
+Ans: 5 h 42 min`,studentAnswer:`6h 10min`,correctMark:0,aiMark:0,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Determine the greatest whole number of hours contained in 342 minutes
+Marker's rationale: The student's answer does not match the solution because no evidence of identifying 5 hours (the greatest whole number of hours in 342 minutes) is present.
+
+Final answer step summary: State the equivalent time in hours and remaining minutes
+Marker's rationale: The student's answer does not match the solution because the stated time 6 h 10 min is not equivalent to 5 h 42 min, even though units and format are acceptable.`,summaryExplanation:`No evidence was shown for identifying the greatest whole hours in 342 minutes (5 h), and the final answer “6 h 10 min” is not equivalent to “5 h 42 min.” While units and formatting are fine, the missing step and incorrect equivalence result in no credit.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Determine the greatest whole number of hours contained in 342 minutes",
+    "evidence_required": "5 h",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "State the equivalent time in hours and remaining minutes",
+    "evidence_required": "5 h 42 min",
+    "mark_value": "2",
+    "units_required": "none"
+  }
+]`,markingGuideline:`B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 8L 020 mL (wrong)  
+   - 8L 20 mL (correct)  
+   - 0 m 95 cm (wrong)  
+   - 95 cm (correct)  
+   (Apply the same idea to times; unnecessary leading zeros such as “05 h” may be penalised.)  
+
+E) Alternative format provided by students  
+4. Duration  
+   Original answer: 2h 45 min  
+   - 2h 45 mins (Correct)  
+   - 2h 45 m (Wrong)`},
+    {id:'i004',maxMarks:2,question:`Fill in the correct number of minutes and seconds.
+
+[Previous Question Part]
+Question Part 1:
+78 s $=$ ________ min _______ s
+Question Part 2:
+90 s $=$ ________ min _______ s
+Question Part 3:
+142 s $=$ ________ min _______ s
+Question Part 4:
+127 s $=$ ________ min _______ s
+Question Part 5:
+195 s $=$ ________ min _______ s
+Question Part 6:
+206 s $=$ ________ min _______ s
+Question Part 7:
+248 s $=$ ________ min _______ s
+Question Part 8:
+430 s $=$ ________ min _______ s
+Question Part 9:
+335 s $=$ ________ min _______ s
+
+[Question]
+600 s $=$ ________ min _______ s`,solution:`10 min  0 s`,studentAnswer:`10 min`,correctMark:1,aiMark:1,aiConfidence:'Low Confidence',stagedExplanation:`S1 step summary: Find the number of whole minutes in 600 seconds
+Marker's rationale: The student's answer fully matches the solution because the value "10 min" is present, showing the correct number of whole minutes in 600 s.
+
+Final answer step summary: State minutes and remaining seconds
+Marker's rationale: The student's answer does not match the solution because it omits the seconds part; hence it is not equivalent to “10 min 0 s”, lacks the required “s” unit, and the format is incomplete.`,summaryExplanation:`The student correctly found “10 min” as the number of whole minutes in 600 s, earning the step mark. However, the final answer omitted the seconds component and the “s” unit, so it is not equivalent to “10 min 0 s,” making the final response incomplete/incorrect.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Find the number of whole minutes in 600 seconds",
+    "evidence_required": "10 min",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "State minutes and remaining seconds",
+    "evidence_required": "10 min 0 s",
+    "mark_value": "2",
+    "units_required": "none"
+  }
+]`,markingGuideline:`B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 8L 020 mL (wrong)  
+   - 8L 20 mL (correct)  
+   (Similar idea applies to unnecessary leading or trailing zeros in time answers, e.g. writing “010 min” for “10 min” would be penalised.)  
+
+E) Alternative format provided by students  
+
+4. Duration  
+Original answer: 2h 45 min  
+- 2h 45 mins (Correct)  
+- 2h 45 m (Wrong)  
+
+(For this question, equivalent variations such as “10 min 0 s”, “10 mins 0 sec”, “10 minutes 0 seconds”, etc. follow the same rule: the unit “min/mins/minutes” must be spelt correctly, and the unit “s/sec/seconds” must be clear; abbreviations must not be incorrect.)`},
+    {id:'i005',maxMarks:3,question:`Jane went shopping in 5 different shops with some money. She spent
+an average of $5n per shop. She spent $45 in the first shop and
+spent $6n more in the second shop than in the first shop.
+What was the average amount of money she spent in the remaining
+shops? Express your answer in terms of n.`,solution:`Total amount of money spent in the 5 shops 
+= 5 \times $5n 
+= $25n 
+
+Amount of money spent in the first shop = $45 
+
+Amount of money spent in the second shop = $(45 + 6n)
+
+Total amount of money spent in the first and second shop 
+= $(45 + 45 + 6n) 
+= $(90 + 6n)
+
+Total amount of money spent in the remaining shops 
+= $(25n - 90 - 6n) 
+= $(25n - 6n - 90) 
+= $(19n - 90)
+
+Average amount of money spent in the remaining shops 
+= $(19n - 90) \div 3 
+= $(\frac{19n \, - \, 90}{3}) 
+
+Ans: $(\frac{19n \, - \, 90}{3})`,studentAnswer:`Total amount spent = (5n × 5) = $25n
+Amount spent in first 2 shops = (45 + 45 + 6n) = (90 + 6n)
+Amount spent in remaining shops = (25n - 90 + 6n) = (31n - 90)
+Average amount of money spent in remaining shops = $(\frac{31n - 90}{3}) = $(\frac{31}{3}n - 30)
+The average amount of money she spent in the remaining shops is $(\frac{31}{3}n -30).`,correctMark:1,aiMark:1,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Find total amount spent in the first two shops
+Marker's rationale: The student's answer fully matches the solution because the total spent in the first two shops, 90+6n, appears exactly in the working.
+
+S2 step summary: Find total amount spent in the remaining three shops
+Marker's rationale: The student's answer does not match the solution because the expression for the remaining three shops is 31n−90, not the correct 19n−90.
+
+Final answer step summary: Compute the average amount spent in the remaining shops
+Marker's rationale: The student's answer does not match the solution because the expression given, (31n−90)/3, is not algebraically equivalent to the required (19n−90)/3, although it is written with a dollar sign and in an acceptable format.`,summaryExplanation:`The total for the first two shops was correctly shown as 90 + 6 n 90+6n. But the remaining three shops were written as 31 n − 90 31n−90 instead of the correct 19 n − 90 19n−90, leading to a final average of ( 31 n − 90 ) / 3 (31n−90)/3, which is not equivalent to the required ( 19 n − 90 ) / 3 (19n−90)/3. Notation and format were acceptable but the algebra was wrong.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Find total amount spent in the first two shops",
+    "evidence_required": "$90+6n$",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "S2",
+    "step_summary": "Find total amount spent in the remaining three shops",
+    "evidence_required": "$19n-90$",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "Compute the average amount spent in the remaining shops",
+    "evidence_required": "$(19n-90)/3$",
+    "mark_value": "3",
+    "units_required": "$"
+  }
+]`,markingGuideline:`B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   - 4/10 = $300 (wrong)  
+   - 0.4 = $300 (wrong)  
+   - 3/4 = 4/5 (wrong)  
+   - 7/11 = 0.636 (wrong)  
+   - 7/11 ≈ 0.64 (correct)  
+
+2. Algebraic fractions given in linear format which changes the meaning of the fraction will be penalized.  
+   E.g.  
+   - 3x + 4 / 7 (wrong) (3x + 4) / 7 (correct)  
+
+3. Algebraic terms with coefficient 1 written will be marked down.  
+   E.g.  
+   - 1a + 3 (wrong)  
+   - a + 3 (correct)  
+
+4. Separate algebra terms with units that are given without brackets will be marked down.  
+   E.g.  
+   - 2a + 3 cm (wrong)  
+   - (2a + 3) cm (correct)  
+   - 3x + 2 years (wrong)  
+   - (3x+2) years (correct)  
+
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 8L 020 mL (wrong)  
+   - 8L 20 mL (correct)  
+   - 8020 mL (correct)  
+   - 0 m 95 cm (wrong)  
+   - 95 cm (correct)  
+   - 2.34 litres (correct)  
+   - 2.340 litres (wrong) unless question specified 3 decimal places  
+   - 173.9 (correct)  
+   - 173.90 (wrong) unless question specified 2 decimal places  
+     
+   Trailing zeros on number pattern can be accepted  
+   - 0.900 (correct)  
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   E.g.  
+   - 50c (correct)  
+   - S100 (correct)  
+
+E) Alternative format provided by students  
+
+6. Money  
+   Writing dollars and cents in words is acceptable; Interchanging of comma (,) and period (.) is not acceptable; Using unnecessary brackets is not acceptable  
+   - $20 and 50¢ (Correct)  
+   - 20 dollars and 50 cents (Correct)  
+   - $2500 (Correct)  
+   - $2 500 (Correct)  
+   - $1,250.50 (Correct)  
+   - $(10t) (Wrong)  
+   - $1250,50 (Wrong)`},
+    {id:'i006',maxMarks:3,question:`Peter drew 2 semicircles and 1 triangle PRS. RO and PS are the
+height and the base of the triangle respectively. O is the centre
+of the 2 semicircles. The diameters of the big and small semicircle
+are 14 cm and 10 cm respectively. What is the total area of the
+shaded parts?<br>
+(Take $\pi$ to be $\frac{22}{7}$)
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/87219a_qsn_img_0_1606026511.png)`,solution:`Radius of big semicircle = 14 cm \div 2 = 7 cm
+
+Area of big semicircle
+= \frac{1}{2} \times \frac{22}{7} \times 7 cm \times 7
+cm
+= 77 cm^2
+
+Area of triangle
+= \frac{1}{2} \times 14 cm \times 7 cm
+= 49 cm^2
+
+Radius of small semicircle = 10 cm \div 2 = 5 cm
+
+Area of small semicircle
+= \frac{1}{2} \times \frac{22}{7} \times 5 cm \times 5
+cm
+= 39\frac{2}{7} cm^2
+
+Area of shaded part
+= (Area of big semicircle - Area of triangle) + Area of small
+semicircle
+= (77 cm^2 - 49 cm^2) + 39\frac{2}{7} cm^2
+= 67\frac{2}{7} cm^2
+
+Ans: 67\frac{2}{7} cm^2`,studentAnswer:`Area of big semicircle:$\frac{1}{2}$x$\frac{22}{7}$x7x7=77
+Area of triangle:$\frac{1}{2}$x14x10=70
+Area of small semicircle:$\frac{1}{2}$x$\frac{22}{7}$x5x5=39$\frac{2}{7}$
+Shaded parts: 77-70=7
+7+39$\frac{2}{7}$=46$\frac{2}{7}$cm$^{2}$`,correctMark:1,aiMark:2,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Calculate area of the big semicircle
+Marker's rationale: The student's answer fully matches the solution because the area of the big semicircle is correctly shown as 77 cm².
+
+S2 step summary: Calculate area of the small semicircle
+Marker's rationale: The student's answer fully matches the solution because the area of the small semicircle is correctly calculated as 39 2/7 cm².
+
+Final answer step summary: Combine areas (big semicircle – triangle + small semicircle) to obtain total shaded area
+Marker's rationale: The student's answer does not match the solution because the numerical value 46 2/7 cm² differs from the correct 67 2/7 cm², so Answer Equivalence fails. Units and format are acceptable but cannot earn marks without the correct value.`,summaryExplanation:`The areas of the big semicircle (77 cm²) and small semicircle (39 2/7 cm²) were both computed correctly. The final combined area, however, was given as 46 2/7 cm² rather than the correct 67 2/7 cm²; despite proper units and presentation, the wrong value loses the final mark.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Calculate area of the big semicircle",
+    "evidence_required": "77 cm\u00b2",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "S2",
+    "step_summary": "Calculate area of the small semicircle",
+    "evidence_required": "39\u2156\u2044\u2087 cm\u00b2",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "Combine areas (big semicircle \u2013 triangle + small semicircle) to obtain total shaded area",
+    "evidence_required": "67\u2156\u2044\u2087 cm\u00b2",
+    "mark_value": "3",
+    "units_required": "cm\u00b2"
+  }
+]`,markingGuideline:`Relevant rules for grading this question:
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs … will be penalized.  
+5. Redundancy – Leading zero, trailing zero, and zero place holders … will be penalized.  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.
+
+D) Units related marking  
+1. Angles without a degree sign will be marked down.  
+(Area question – rule retained in case students cite angles.)
+
+E) Alternative format provided by students  
+2. Powers in units  
+   Original form: cm²  
+   - cm2 (Correct)  
+   - cm^2 (Correct)  
+   - cm square (Correct)  
+   - square cm (Correct)  
+   - ^cm2 (Wrong)
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working. (Include since maybe no calculator.)
+
+Finish within 500 words.`},
+    {id:'i007',maxMarks:4,question:`Andy earned $4200 a month, while Brad earned $450 less than Andy
+each month. Andy and Brad spent $1900 and $1550 a month
+respectively, and saved the rest. What was the difference between
+the monthly savings that Andy and Brad had?`,solution:`Brad's monthly salary = $4200 - $450 = $3750
+
+Andy's monthly savings = $4200 - $1900 = $2300
+
+Brad's monthly savings = $3750 - $1550 = $2200
+
+Difference in their monthly savings = $2300 - $2200 =
+$100
+
+Ans: $100`,studentAnswer:`No of $ brad earned every month = 4200 - 450 = 3750
+
+No of brad earned every month (after some money spent) = 3750 - 1550 =2200
+
+No of Andy earned every month (after some money spent) = 4200 - 1900 =2300
+
+The difference between the monthly savings that andy and brad had = 2300 - 2200 = 100
+
+Ans 100`,correctMark:3,aiMark:3,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Calculate Brad's monthly salary
+Marker's rationale: The student's answer fully matches the solution because the value 3750, Brad’s salary, is explicitly shown.
+
+S2 step summary: Calculate Andy's monthly savings
+Marker's rationale: The student's answer fully matches the solution because the value 2300, Andy’s savings, is explicitly shown.
+
+S3 step summary: Calculate Brad's monthly savings
+Marker's rationale: The student's answer fully matches the solution because the value 2200, Brad’s savings, is explicitly shown.
+
+Final answer step summary: Find the difference between Andy's and Brad's monthly savings
+Marker's rationale: The student's answer partially matches the solution because the numeric answer 100 is correct (criterion 1) and clearly stated (criterion 3), but the required money unit “$” is missing in the final answer (criterion 2).`,summaryExplanation:`Intermediate values are all correct and shown: Brad’s salary 3750, Andy’s savings 2300, Brad’s savings 2200. The final numerical difference of 100 is correct and clearly presented, but the required money unit “$” is missing, so the otherwise correct answer is incomplete.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Calculate Brad's monthly salary",
+    "evidence_required": "3750",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "S2",
+    "step_summary": "Calculate Andy's monthly savings",
+    "evidence_required": "2300",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "S3",
+    "step_summary": "Calculate Brad's monthly savings",
+    "evidence_required": "2200",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "Find the difference between Andy's and Brad's monthly savings",
+    "evidence_required": "$100",
+    "mark_value": "4",
+    "units_required": "$"
+  }
+]`,markingGuideline:`The following rules from the Full Marking Guideline are required to grade students’ answers to this money-based savings-difference question.
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+5. Redundancy – Leading zero, trailing zero, and zero place holders
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   E.g.  
+   - 50c (correct)  
+   - S100 (correct)
+
+E) Alternative format provided by students  
+6. Money  
+   Writing dollars and cents in words is acceptable; Interchanging of comma (,) and period (.) is not acceptable; Using unnecessary brackets is not acceptable  
+   - $20 and 50¢ (Correct)  
+   - 20 dollars and 50 cents (Correct)  
+   - $2500 (Correct)  
+   - $2 500 (Correct)  
+   - $1,250.50 (Correct)  
+   - $(10t) (Wrong)  
+   - $1250,50 (Wrong)`},
+    {id:'i008',maxMarks:4,question:`There are different coloured lights on a Christmas tree. The red light blink once every 2 seconds, the green light blink once every 5 seconds and the yellow light blink once every 10 seconds. How many times will all three coloured lights blink together in half a minute?`,solution:`Multiples of 2: 2, 4, 6, 8, 10
+Multiples of 5: 5, 10, 15, 20, 25
+Multiples of 10: 10, 20, 30, 40 , 50
+All three coloured lights will blink together every 10 s.
+Half a minute = 30 s
+Number of times all three coloured lights will blink together in 30 seconds = 30 s ÷ 10 s= 3
+Ans: 3 times`,studentAnswer:`Multiples of 2:  2 , 4, 6, 8, 10, 12, 14, 16, 18, 20
+Multiples of 5: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+Multiples of 10:  10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+Ans : 10`,correctMark:2,aiMark:1,aiConfidence:'Low Confidence',stagedExplanation:`S1 step summary: Find the common blinking interval (LCM of 2 s, 5 s and 10 s)
+Marker's rationale: The student's answer fully matches the solution because the value 10 appears in all three multiple lists, showing they identified 10 s as the common blinking interval.
+
+S2 step summary: Convert half a minute to seconds
+Marker's rationale: The student's answer does not match the solution because there is no conversion of half a minute to 30 s anywhere in the working.
+
+S3 step summary: Calculate how many common intervals fit into 30 s
+Marker's rationale: The student's answer does not match the solution because they did not divide 30 s by 10 s to obtain 3; no value ‘3’ is shown.
+
+Final answer step summary: State the total number of times all lights blink together in half a minute
+Marker's rationale: The student's answer does not match the solution because the stated total (10) is not mathematically equivalent to the required answer 3. Units are not required and the format is acceptable, but correctness fails.`,summaryExplanation:`The common blinking interval was correctly identified as 10 s. The student did not convert half a minute to 30 s, nor show dividing 30 s by 10 s to obtain 3. The final answer “10” is therefore not equivalent to the required “3,” even though formatting and units needs were otherwise acceptable.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Find the common blinking interval (LCM of 2 s, 5 s and 10 s)",
+    "evidence_required": "10 s",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "S2",
+    "step_summary": "Convert half a minute to seconds",
+    "evidence_required": "30 s",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "S3",
+    "step_summary": "Calculate how many common intervals fit into 30 s",
+    "evidence_required": "3",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "State the total number of times all lights blink together in half a minute",
+    "evidence_required": "3",
+    "mark_value": "4",
+    "units_required": "none"
+  }
+]`,markingGuideline:`The following rules from the Full Marking Guideline are potentially relevant for grading pupils’ answers to the Christmas-tree blinking-lights question. (Section / rule numbers are kept unchanged.)
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   …  
+   (Ensure a pupil does not use an unjustified “=” before the final answer.)  
+
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 173.9 (correct)  
+   - 173.90 (wrong) unless question specified 2 decimal places  
+   (If a pupil writes something like “03” or “3.0” when the exact answer is 3, apply this rule.)
+
+D) Units related marking  
+(There is no specific time-unit requirement for this problem, but pupils might append the word “times”.  None of the listed Unit rules penalise or mandate that, so no extra time-unit rule is extracted.)
+
+H) Others  
+6. When students are asked about how the items are grouped, as long as their answers are logically correct, we will give full marks.
+
+(Although the question is not explicitly about grouping, pupils may explain grouping of seconds or blinks in their working; this rule allows flexibility in awarding method marks as long as logic is sound.)`}
   ],
   part2a: [
     {id:'a001',maxMarks:1,question:`Composite figure with semicircle, rectangle and circle. Find unshaded area.`,solution:`462 cm²`,studentAnswer:`462 cm²`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Answer value and unit correct.`,summaryExplanation:`Fully correct.`},
@@ -35,7 +547,7 @@ Difference $100`,studentAnswer:`Diff 100`,correctMark:3,aiMark:3,aiConfidence:'h
     {id:'a008',maxMarks:2,question:`Which two children can buy 30¢ candy?`,solution:`Chloe and Adriel`,studentAnswer:`adriel`,correctMark:1,aiMark:0,aiConfidence:'high',stagedExplanation:`Totals for each child missing and only one name given.`,summaryExplanation:`Needs both Chloe and Adriel.`},
     {id:'a009',maxMarks:3,question:`Trip to Penang: 1/5 teachers, 2/3 of students boys. Fraction of people who were girls?`,solution:`4/15`,studentAnswer:`7/15`,correctMark:2,aiMark:2,aiConfidence:'high',stagedExplanation:`Steps for 4/5 and 1/3 shown; final subtraction wrong.`,summaryExplanation:`Final fraction should be 4/15.`},
     {id:'a010',maxMarks:3,question:`Eraser $x, pen $0.30 more, ruler $0.10 less than pen. Cost of 2 pens and 1 ruler?`,solution:`$(3x+0.80)`,studentAnswer:`$(x+0.80)`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Missing expressions for pen and ruler; final algebra wrong.`,summaryExplanation:`Needs (3x+0.80).`},
-    {id:'a011',maxMarks:3,question:`Rectangular tank 40×30×36 cm, 5/6 full. Cubic tank 40 cm sides 5/8 full. After pouring until cube full, how much water left in rectangular tank (litres)?`,solution:`12 L`,studentAnswer:`37L`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Rectangular volume correct; extra volume wrong so final 37L.`,summaryExplanation:`Should be 12 L left.`},
+    {id:'a011',maxMarks:3,question:`Rectangular tank 40×30×36 cm, 5/6 full. Cubic tank 40 cm sides 5/8 full. After pouring until cube full, how much water left in rectangular tank (litres)?`,solution:`12 L`,studentAnswer:`37L`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Rectangular volume correct; extra volume wrong so final 37L.`,summaryExplanation:`Should be 12L left.`},
     {id:'a012',maxMarks:3,question:`Terence drove 3/8 at 72 km/h, remaining 720 km. Overall average 76.8 km/h. Average speed for second part?`,solution:`80 km/h`,studentAnswer:`240 km/h`,correctMark:1,aiMark:2,aiConfidence:'low',stagedExplanation:`Total distance and time correct; final speed wrong.`,summaryExplanation:`Average should be 80 km/h.`},
     {id:'a013',maxMarks:4,question:`Eileen baked cupcakes, sold half, added 175 strawberry. Now 512. How many more chocolate than strawberry?`,solution:`499`,studentAnswer:`162`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Remaining chocolate 337 shown; total and difference missing/wrong.`,summaryExplanation:`Final difference should be 499.`},
     {id:'a014',maxMarks:4,question:`Harold had 520 beads, 35% black. After using 95 beads, 40% of remaining are black. How many red beads used?`,solution:`83`,studentAnswer:`113`,correctMark:3,aiMark:3,aiConfidence:'high',stagedExplanation:`Initial red, remaining total and red correct; final subtraction wrong.`,summaryExplanation:`Should be 83 red beads used.`},
