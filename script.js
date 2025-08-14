@@ -1,20 +1,14 @@
-// questions.js adds questionDB to the global scope
-
-// Load part 1 questions initially, alternating explanation styles
 let questions = questionDB.part1.map((q, idx) => ({
   ...q,
   part: 1,
   explanationType: idx % 2 === 0 ? 'staged' : 'summary'
 }));
 
+
 let current = 0;
 let results = [];
 let timerInterval;
 let timeLeft = 0;
-let userName = "";
-let questionStartTime = 0;
-let currentRecord = null;
-let part1SummaryShown = false;
 
 const intro = document.getElementById("intro");
 const timerDiv = document.getElementById("timer");
@@ -23,8 +17,6 @@ const explanationDiv = document.getElementById("explanation-container");
 const summaryDiv = document.getElementById("summary");
 
 function startStudy() {
-  userName = document.getElementById("user-name").value.trim();
-  if (!userName) return alert("Please enter your name");
   intro.classList.add("hidden");
   renderQuestion();
 }
@@ -36,6 +28,7 @@ function renderQuestion() {
     endStudy();
     return;
   }
+
   if (current === 8 && !part1SummaryShown) {
     part1SummaryShown = true;
     showPartSummary(1);
