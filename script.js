@@ -1,5 +1,5 @@
 // Core data for questions
-let questions = questionDB.part1.map(q => ({ ...q, part: 1 }));
+let questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
 
 let current = 0;
 let results = [];
@@ -9,20 +9,30 @@ let part1SummaryShown = false;
 let questionStartTime;
 let currentRecord;
 let userName = "";
+let selectedVariant = null;
 
 const intro = document.getElementById("intro");
 const timerDiv = document.getElementById("timer");
 const qContainer = document.getElementById("question-container");
 const explanationDiv = document.getElementById("explanation-container");
 const summaryDiv = document.getElementById("summary");
+const variantPicker = document.getElementById("variant-picker");
 
 function startStudy() {
   userName = document.getElementById("user-name").value.trim() || "Anonymous";
   intro.classList.add("hidden");
-  renderQuestion();
+  variantPicker.classList.remove("hidden");
 }
 
 document.getElementById("start-btn").addEventListener("click", startStudy);
+
+variantPicker.querySelectorAll('button').forEach(btn => {
+  btn.onclick = () => {
+    selectedVariant = btn.getAttribute('data-variant');
+    variantPicker.classList.add('hidden');
+    renderQuestion();
+  };
+});
 
 function renderQuestion() {
   if (current >= questions.length) {
@@ -123,6 +133,7 @@ function handleSelfMark(q) {
         };
         document.getElementById("next-q").onclick = () => {
           currentRecord.viewedExplanation = viewed;
+          currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
           results.push(currentRecord);
           current++;
           renderQuestion();
@@ -131,6 +142,7 @@ function handleSelfMark(q) {
         const ai = getAi(q);
         currentRecord.aiMark = ai.aiMark;
         currentRecord.aiConfidence = ai.confidence;
+        currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
         results.push(currentRecord);
         current++;
         renderQuestion();
@@ -189,7 +201,12 @@ function getAi(q) {
 }
 
 function getExplanation(q) {
-  return q.explanationType === "staged" ? q.stagedExplanation : q.summaryExplanation;
+  if (q.explanationType === "staged") {
+    const rubric = q.rubricJson ? `<pre>${q.rubricJson}</pre>` : "";
+    const guideline = q.markingGuideline ? `<pre>${q.markingGuideline}</pre>` : "";
+    return `<p>${q.stagedExplanation}</p>${rubric}${guideline}`;
+  }
+  return `<p>${q.summaryExplanation}</p>`;
 }
 
 function showPartSummary(part, final = false) {
@@ -221,15 +238,13 @@ function showPartSummary(part, final = false) {
   summaryDiv.innerHTML = html;
   summaryDiv.classList.remove("hidden");
   if (!final && part === 1) {
-    const picker = document.createElement("div");
-    picker.innerHTML = `<p>Select experiment variant for Part 2:</p>`;
-    ["L1","L2","L3","L4"].forEach(label => {
-      const btn = document.createElement("button");
-      btn.textContent = label;
-      btn.onclick = () => setupPart2(label);
-      picker.appendChild(btn);
-    });
-    summaryDiv.appendChild(picker);
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Start Part 2";
+    nextBtn.onclick = () => {
+      summaryDiv.classList.add("hidden");
+      setupPart2(selectedVariant);
+    };
+    summaryDiv.appendChild(nextBtn);
   }
 }
 
