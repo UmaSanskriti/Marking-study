@@ -537,24 +537,365 @@ H) Others
 (Although the question is not explicitly about grouping, pupils may explain grouping of seconds or blinks in their working; this rule allows flexibility in awarding method marks as long as logic is sound.)`}
   ],
   part2a: [
-    {id:'a001',maxMarks:1,question:`Composite figure with semicircle, rectangle and circle. Find unshaded area.`,solution:`462 cm²`,studentAnswer:`462 cm²`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Answer value and unit correct.`,summaryExplanation:`Fully correct.`},
-    {id:'a002',maxMarks:1,question:`Figure with centre G. Name angle same size as ∠CAG.`,solution:`∠GCA or ∠ACG`,studentAnswer:`gca`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Lowercase letters used.`,summaryExplanation:`Angle named correctly but not capitalised.`},
-    {id:'a003',maxMarks:1,question:`Find 2¾ ÷ 3 in simplest fraction.`,solution:`11/12`,studentAnswer:`11/12`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Correct fraction.`,summaryExplanation:`Matches required value.`},
-    {id:'a004',maxMarks:1,question:`In 108, the digit 1 is in the ______ place.`,solution:`hundreds`,studentAnswer:`hundred`,correctMark:0,aiMark:0,aiConfidence:'low',stagedExplanation:`Plural form required.`,summaryExplanation:`“hundred” not equivalent to “hundreds”.`},
-    {id:'a005',maxMarks:2,question:`Scale diagram: find sum of values P and Q.`,solution:`P=0.88, Q=1.14, sum 2.02`,studentAnswer:`P:0.88 Q:1.14`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Intermediate values correct; sum missing.`,summaryExplanation:`Missing 2.02 final sum.`},
-    {id:'a006',maxMarks:2,question:`36 girls took 79 beads each with 16 left. How many beads initially?`,solution:`2860`,studentAnswer:`2860`,correctMark:2,aiMark:2,aiConfidence:'high',stagedExplanation:`Working for 2844 not shown.`,summaryExplanation:`Final value correct but initial step missing.`},
-    {id:'a007',maxMarks:2,question:`Net of solid: which solid forms?`,solution:`Solid D`,studentAnswer:`Solid C and D`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Multiple solids chosen.`,summaryExplanation:`Only Solid D fits the net.`},
-    {id:'a008',maxMarks:2,question:`Which two children can buy 30¢ candy?`,solution:`Chloe and Adriel`,studentAnswer:`adriel`,correctMark:1,aiMark:0,aiConfidence:'high',stagedExplanation:`Totals for each child missing and only one name given.`,summaryExplanation:`Needs both Chloe and Adriel.`},
-    {id:'a009',maxMarks:3,question:`Trip to Penang: 1/5 teachers, 2/3 of students boys. Fraction of people who were girls?`,solution:`4/15`,studentAnswer:`7/15`,correctMark:2,aiMark:2,aiConfidence:'high',stagedExplanation:`Steps for 4/5 and 1/3 shown; final subtraction wrong.`,summaryExplanation:`Final fraction should be 4/15.`},
-    {id:'a010',maxMarks:3,question:`Eraser $x, pen $0.30 more, ruler $0.10 less than pen. Cost of 2 pens and 1 ruler?`,solution:`$(3x+0.80)`,studentAnswer:`$(x+0.80)`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Missing expressions for pen and ruler; final algebra wrong.`,summaryExplanation:`Needs (3x+0.80).`},
-    {id:'a011',maxMarks:3,question:`Rectangular tank 40×30×36 cm, 5/6 full. Cubic tank 40 cm sides 5/8 full. After pouring until cube full, how much water left in rectangular tank (litres)?`,solution:`12 L`,studentAnswer:`37L`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Rectangular volume correct; extra volume wrong so final 37L.`,summaryExplanation:`Should be 12L left.`},
-    {id:'a012',maxMarks:3,question:`Terence drove 3/8 at 72 km/h, remaining 720 km. Overall average 76.8 km/h. Average speed for second part?`,solution:`80 km/h`,studentAnswer:`240 km/h`,correctMark:1,aiMark:2,aiConfidence:'low',stagedExplanation:`Total distance and time correct; final speed wrong.`,summaryExplanation:`Average should be 80 km/h.`},
-    {id:'a013',maxMarks:4,question:`Eileen baked cupcakes, sold half, added 175 strawberry. Now 512. How many more chocolate than strawberry?`,solution:`499`,studentAnswer:`162`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Remaining chocolate 337 shown; total and difference missing/wrong.`,summaryExplanation:`Final difference should be 499.`},
-    {id:'a014',maxMarks:4,question:`Harold had 520 beads, 35% black. After using 95 beads, 40% of remaining are black. How many red beads used?`,solution:`83`,studentAnswer:`113`,correctMark:3,aiMark:3,aiConfidence:'high',stagedExplanation:`Initial red, remaining total and red correct; final subtraction wrong.`,summaryExplanation:`Should be 83 red beads used.`},
-    {id:'a015',maxMarks:4,question:`Andy $4200, Brad $450 less, spent 1900 and 1550. Difference in savings?`,solution:`$100`,studentAnswer:`300`,correctMark:2,aiMark:1,aiConfidence:'high',stagedExplanation:`Brad salary and savings incorrect; final difference 300 without $.`,summaryExplanation:`Correct difference is $100.`},
-    {id:'a016',maxMarks:4,question:`Donuts $2.35, buy 8 get 1 free. Cost for 216 donuts?`,solution:`$451.20`,studentAnswer:`$451.2`,correctMark:3,aiMark:4,aiConfidence:'high',stagedExplanation:`Cost of 9 donuts not shown but final amount correct.`,summaryExplanation:`$451.2 equals $451.20 with correct unit.`}
+    {id:'a001',maxMarks:1,question:`The figure below is made up of a semi-circle and a rectangle. A
+smaller circle fits in the middle of the semi-circle. 2 quarter
+circles are enclosed within the rectangle. Find the area of the
+unshaded region. (Take $\pi$ to be $\frac{22}{7}$)<br>The use of calculators is NOT allowed.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/10985a_qsn_img_0_1656902857.svg)`,solution:`Area of 2 big quarter circles of radius 14 cm 
+$= \frac{1}{2} \pi r^{2} $
+$= \frac{1}{2} \times \frac{22}{7} \times$ 14 cm $\times$ 14 cm 
+$=$ 308  cm$^{2}$
+Area of small circle of radius 7 cm $= \pi r^{2}$  
+$= \frac{22}{7} \times$ 7 cm $\times$ 7 cm $=$ 154  cm$^{2}$
+Total area of the unshaded region 
+$=$ 308 cm$^2$ $+$ 154 cm$^2$ 
+$=$ 462 cm$^{2} $
+
+Ans: 462 cm$^2$`,studentAnswer:`\(462 cm^{2}\)`,correctMark:1,aiMark:1,aiConfidence:'High Confidence',stagedExplanation:`Final answer step summary: The area of the unshaded region is 462 cm².
+Marker's rationale: The student's answer matches the solution because the numerical value (462) is identical to the required answer, includes the correct unit cm², and is clearly presented without any format errors.`,summaryExplanation:`The final answer is fully correct: 462 cm² matches the required value and unit, and it’s clearly presented with no formatting issues.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "The area of the unshaded region is 462 cm².",
+    "evidence_required": "462 cm²",
+    "mark_value": "1",
+    "units_required": "cm²"
+  }
+]`,markingGuideline:`The following rules from the Full Marking Guideline may be invoked when grading students’ answers to this “area of composite figure – no-calculator” question. Section / rule numbers are kept exactly as in the original document.
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs … will be penalized.  
+5. Redundancy – Leading zero, trailing zero, and zero place holders … will be penalized.  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.
+
+D) Units related marking  
+1. Angles without a degree sign will be marked down. (Relevant if any angle values are stated.)  
+6. The usage of S and c for dollars and cents is acceptable. (Not directly relevant here but governs unit presentation in general.)  
+8. Years are considered as units and will be treated accordingly. (General unit guidance.)
+
+E) Alternative format provided by students  
+2. Powers in units  
+   Original form: cm²  
+   - cm2 (Correct)  
+   - cm^2 (Correct)  
+   - cm square (Correct)  
+   - square cm (Correct)  
+   - ^cm2 (Wrong)
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working.
+
+H) Others  
+2. If the question is 'what is the number of triangles shaded', we will mark down if students give fractions instead. (By extension, if an exact area is required, giving an unrelated form would be penalised.)
+
+These copied rules cover fraction/precision requirements, correct unit notation for area (cm² variations), proper use of equal signs, avoidance of redundant zeros, geometric labelling, and the obligation to show working in this no-calculator context.`},
+    {id:'a002',maxMarks:1,question:`In the figure below, not drawn to scale, G is the centre of the circle.
+AB, CD, DE, EF are straight lines. $\small \angle$CGE is twice the size of $\small \angle$AGC. $\small \angle$ABD $= $ 123$^\circ$.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/30839des1_qsn_img_0_1391523382.png)
+
+[Question]
+<html><head></head><body><p>Name the angle which has the same size as $\angle$CAG.</p></body></html>`,solution:`Ans$: $\angle$GCA or $\angle$ACG`,studentAnswer:`gca`,correctMark:0,aiMark:0,aiConfidence:'High Confidence',stagedExplanation:`Final answer step summary: The angle equal to ∠CAG is named as ∠GCA or ∠ACG.
+Marker's rationale: The student's answer does not match the solution because, although it names the correct angle (Criteria 1) and no units are needed (Criteria 2), the letters are written in lowercase. Geometry labels given in the question are capital letters, so per the marking guideline the required format is not followed, failing Criteria 3.`,summaryExplanation:`Although the named angle is mathematically correct, the response uses lowercase letters where capitals are required, so formatting criteria fail and the final answer is marked incorrect.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "The angle equal to ∠CAG is named as ∠GCA or ∠ACG.",
+    "evidence_required": "∠GCA or ∠ACG",
+    "mark_value": "1",
+    "units_required": "none"
+  }
+]`,markingGuideline:`C) Common presentation errors  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.  
+ E.g.  
+ - AB (correct)  
+ - ab (wrong)  
+ - ∠ABC (correct)  
+ - ∠abc (wrong)  
+ - angle ABC (correct)  
+ - angle abc (wrong)  
+  For one-letter angle form, small letters are acceptable.  
+  E.g.  
+  - ∠y (correct)  
+  - ∠Y (correct)`},
+    {id:'a003',maxMarks:1,question:`Find the value of 2$\frac{3}{4}$ $\div$ 3.  Express your answer as a fraction in its simplest form.`,solution:`2$\frac{3}{4}$ $\div$ 3
+
+$=$ $\frac{11}{4}$ $\div$ 3
+
+$=$ $\frac{11}{4}$ $\times$ $\frac{1}{3}$
+
+$=$ $\frac{11}{12}$
+
+Ans: $\frac{11}{12}$`,studentAnswer:`$\frac{11}{12}$`,correctMark:1,aiMark:1,aiConfidence:'High Confidence',stagedExplanation:`Final answer step summary: The final answer is 11/12.
+Marker's rationale: The student's answer matches the solution because the final value is exactly 11/12, no units are needed, and it is given as a fraction in simplest form.`,summaryExplanation:`The answer 11/12 exactly matches the required value, needs no units, and is in simplest fractional form, so it is fully correct.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "The final answer is 11/12.",
+    "evidence_required": "11/12",
+    "mark_value": "1",
+    "units_required": "none"
+  }
+]`,markingGuideline:`Relevant rules for grading this question:
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   - 4/10 = $300 (wrong)  
+   - 0.4 = $300 (wrong)  
+   - 3/4 = 4/5 (wrong)  
+   - 7/11 = 0.636 (wrong)  
+   - 7/11 ≈ 0.64 (correct)  
+
+9. The usage of : as a replacement of ÷ is acceptable  
+   E.g.  
+   - 10 : 2 = 5 (correct)  
+
+E) Alternative format provided by students  
+
+1. Fractions  
+   Original answer: 1 2/3  
+   - 1 2/3 (Correct)  
+   - 1 and 2 out of 3 (Correct)  
+   - 1 and 2 over 3 (Correct)  
+   - 12/3 (Wrong)  
+   - 1/2/3 (Wrong)`},
+    {id:'a004',maxMarks:1,question:`[Previous Question Part]
+Question Part 1:
+In 816, the digit in the hundreds place is __________.
+Question Part 2:
+In 987, the digit in the tens place is ________.
+Question Part 3:
+In 463, the value of the digit 4 is ________.
+Question Part 4:
+In 388, the value of the digit 3 is _________.
+Question Part 5:
+In 897, the digit 9 is in the ____________ place.
+
+[Question]
+In 108, the digit 1 is in the ____________ place.`,solution:`hundreds`,studentAnswer:`hundred`,correctMark:0,aiMark:0,aiConfidence:'Low Confidence',stagedExplanation:`Final answer step summary: The digit 1 is in the hundreds place.
+Marker's rationale: The student's answer does not match the solution because the required phrase for the place value is “hundreds”. Writing “hundred” omits the necessary plural form and is considered a different term, so the answer is not equivalent (Criteria 1 = 0). No units are required (Criteria 2 = 1) and the response is clearly written (Criteria 3 = 1). Since not all criteria are met, the overall mark is 0.`,summaryExplanation:`The response says “hundred” instead of the required “hundreds,” which is not equivalent; despite clear presentation and no unit requirement, the answer fails on correctness.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "The digit 1 is in the hundreds place.",
+    "evidence_required": "hundreds",
+    "mark_value": "1",
+    "units_required": "none"
+  }
+]`,markingGuideline:`Relevant rules for grading this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+6. Grammar – No marks will be deducted for grammar errors unless it is numbers-to-word questions.`},
+    {id:'a005',maxMarks:2,question:`Ellyn used half of the water in Container A to fill up 3 jars
+completely. The capacity of each jar is 475 m$\small\ell$. Find the
+capacity of Container A. Give your answer in litres and
+millilitres.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/53386a_qsn_img_0_1518928900.png)`,solution:`Volume of 3 such jars $=$ 475 m$\small\ell$ $\times$ 3 $=$ 1425
+m$\small\ell$
+
+Capacity of container A $=$ 1425 m$\small\ell$ $\times$ 2 $=$ 2850
+m$\ell$ $=$ 2 $\small\ell$ 850 m$\ell$
+
+Ans: 2 $\ell$ 850 m$\ell$`,studentAnswer:`475mL x 3 = 1425mL
+
+1425mL = 1 L  425mL`,correctMark:1,aiMark:1,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Find total volume of water in 3 jars.
+Marker's rationale: The student's answer fully matches the solution because 1425 mL appears explicitly, satisfying the required evidence for this step.
+
+Final answer step summary: State capacity of Container A in litres and millilitres.
+Marker's rationale: The student's answer does not match the solution because the stated capacity (1 L 425 mL) is not mathematically equivalent to the required 2 L 850 mL, although correct units and acceptable format were used.`,summaryExplanation:`The student correctly completed S1 by computing the total water in three jars as 1425 mL, which matches the required evidence. However, the final answer was wrong: they stated Container A’s capacity as 1 L 425 mL instead of the required 2 L 850 mL. Despite this error in value (failing answer equivalence), the response used acceptable units (L/mL) and a clear format, so unit and presentation criteria were met. This aligns with the rubric and unit rules, yielding credit for S1 only and none for the incorrect final capacity.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Find total volume of water in 3 jars",
+    "evidence_required": "1425 mL",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "State capacity of Container A in litres and millilitres",
+    "evidence_required": "2 L 850 mL",
+    "mark_value": "2",
+    "units_required": "L and mL"
+  }
+]`,markingGuideline:`Relevant rules to grade this question  
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 8L 020 mL (wrong)  
+   - 8L 20 mL (correct)  
+   - 8020 mL (correct)  
+   (…examples continue as in guideline…)  
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. (Although for this question we expect “L”, “l”, “mL” or “ml”, this rule reminds markers that accepted unit abbreviations are permissible.)`},
+    {id:'a006',maxMarks:2,question:`A group of 36 girls shared some beads.  After they had taken 79 beads each, there were 16 beads left.  How many beads were there at first?`,solution:`
+36 girls $=$ 36 $\times$ 79 $=$ 2844 beads
+
+At first $=$ 2844 $+$ 16 $=$ 2860
+
+Ans: 2860 beads`,studentAnswer:`2860`,correctMark:2,aiMark:2,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Find total beads taken by the 36 girls
+Marker's rationale: The student's answer does not match the solution because the working showing 2844 beads (total taken) is absent.
+
+Final answer step summary: Compute initial number of beads before sharing
+Marker's rationale: The student's answer fully matches the solution because the final value 2860 is correct, no specific unit is required, and the answer is clearly stated without formatting issues.`,summaryExplanation:`The final value 2860 is correct and clearly stated, but the necessary working for 2844 beads taken by the girls is absent, so only the final-answer marks are awarded.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Find total beads taken by the 36 girls",
+    "evidence_required": "2844 beads",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "Compute initial number of beads before sharing",
+    "evidence_required": "2860 beads",
+    "mark_value": "2",
+    "units_required": "none"
+  }
+]`,markingGuideline:`Below are the ONLY rules that could potentially be required when grading pupils’ responses to this particular question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   … (examples show that using “=” in a chain that is not true is penalised).  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 173.9 (correct)  
+   - 173.90 (wrong) unless question specified 2 decimal places  
+   (Commas in 4-digit numbers such as 2,860 are acceptable; unnecessary zeros are penalised.)
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working.`},
+    {id:'a007',maxMarks:2,question:`<html><head></head><body><p>This is a net of a solid.</p></body></html>
+
+![Image](https://attachment.srv.geniebook.com/api/v2/public/files/Q4mO2bu2deTrbDH8.svg)
+
+[Previous Question Part]
+Question Part 1:
+<html><head></head><body><p>Name the solid that can be formed from the net.</p></body></html>
+
+[Question]
+<html><head></head><body><p>Which of the following solids can be formed from the net above?</p></body></html>
+
+![Image](https://attachment.srv.geniebook.com/api/v2/public/files/xOGCQYZreqcoKIeS.svg)`,solution:`Ans$: Solid D`,studentAnswer:`Solid C and D`,correctMark:0,aiMark:0,aiConfidence:'High Confidence',stagedExplanation:`Final answer step summary: Identify the solid that matches the given net
+Marker's rationale: The student's answer does not match the solution because although the format is acceptable and no units are required, the answer includes both Solid C and Solid D, which is not equivalent to the correct single answer Solid D.`,summaryExplanation:`The student selected both Solid C and Solid D; since the correct unique choice is Solid D, answer equivalence fails despite acceptable format and no unit requirement.`,rubricJson:`[
+  {
+    "step_code": "Final answer",
+    "step_summary": "Identify the solid that matches the given net",
+    "evidence_required": "Solid D",
+    "mark_value": "2",
+    "units_required": "none"
+  }
+]`,markingGuideline:`Relevant rules to grade this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+6. Grammar – No marks will be deducted for grammar errors unless it is numbers-to-word questions  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.  
+    E.g.  
+    - AB (correct)  
+    - ab (wrong)  
+    - ∠ABC (correct)  
+    - ∠abc (wrong)  
+    - angle ABC (correct)  
+    - angle abc (wrong)  
+      
+    For one-letter angle form, small letters are acceptable.  
+    E.g.  
+    - ∠y (correct)  
+    - ∠Y (correct)  
+
+D) Units related marking  
+7. Students mentioning the shape instead of drawing is acceptable unless the question is about drawing.  
+    E.g.  
+    - Square (correct)  
+    - ⬛️ (correct)`},
+    {id:'a008',maxMarks:2,question:`The diagram below shows the amount of money 4 children have.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/2/216331_qsn_img_00.svg)
+
+Which two children have enough money to each buy a candy that costs
+30¢?`,solution:`Amount of money Chloe has  $=$ 50¢ $+$ 20¢ $+$ 10¢
+ $=$ 80¢  
+Amount of money Alex has  $=$ 10¢ $+$ 10¢ $+$ 5¢ 
+ $=$ 25¢  
+Amount of money Asher has $=$ 10¢ $+$ 5¢ $+$ 5¢ 
+ $=$ 20¢  
+Amount of money Adriel has  $=$ 20¢ $+$ 5¢ $+$ 5¢ 
+ $=$ 30¢  
+In order to be able to buy the candy, each child must have at least 30¢. Chloe and Adriel have at least 30¢. 
+Ans$: Chloe and Adriel`,studentAnswer:`adriel`,correctMark:1,aiMark:0,aiConfidence:'High Confidence',stagedExplanation:`S1 step summary: Find the total amount of money each child has
+Marker's rationale: The student's answer does not match the solution because no working showing the individual amounts (Chloe 80¢, Alex 25¢, Asher 20¢, Adriel 30¢) is provided.
+
+Final answer step summary: State the two children who can each afford a 30¢ candy
+Marker's rationale: The student's answer does not match the solution because it names only “Adriel” instead of both “Chloe and Adriel”. Units are not required and format is acceptable, but the essential answer is incomplete.`,summaryExplanation:`The individual totals for each child are not shown, and the final answer lists only Adriel rather than “Chloe and Adriel,” making the response incomplete though formatting is fine.`,rubricJson:`[
+  {
+    "step_code": "S1",
+    "step_summary": "Find the total amount of money each child has",
+    "evidence_required": "Chloe 80¢, Alex 25¢, Asher 20¢, Adriel 30¢",
+    "mark_value": "1",
+    "units_required": "none"
+  },
+  {
+    "step_code": "Final answer",
+    "step_summary": "State the two children who can each afford a 30¢ candy",
+    "evidence_required": "Chloe and Adriel",
+    "mark_value": "2",
+    "units_required": "none"
+  }
+]`,markingGuideline:`The following rules from the Full Marking Guideline are needed to grade this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   … (trailing zeros on number pattern can be accepted)  
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   E.g.  
+   - 50c (correct)  
+   - S100 (correct)  
+
+E) Alternative format provided by students  
+6. Money  
+   Writing dollars and cents in words is acceptable; Interchanging of comma (,) and period (.) is not acceptable; Using unnecessary brackets is not acceptable  
+   - $20 and 50¢ (Correct)  
+   - 20 dollars and 50 cents (Correct)  
+   - $2500 (Correct)  
+   - $2 500 (Correct)  
+   - $1,250.50 (Correct)  
+   - $(10t) (Wrong)  
+   - $1250,50 (Wrong)`}
   ],
   part2b: [
+
     {id:'b001',maxMarks:1,question:`Vani took part in a 2400 m race. She rested after 835 m and ran another 258 m before giving up. What is the distance she ran in all?`,solution:`1093 m`,studentAnswer:`835+258=1093`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Unit m missing so marked 0.`,summaryExplanation:`Correct number but missing unit.`},
     {id:'b002',maxMarks:1,question:`A printer prints 25 copies in 30 s. How long for 80 copies?`,solution:`96 s`,studentAnswer:`96`,correctMark:0,aiMark:0,aiConfidence:'high',stagedExplanation:`Unit s missing.`,summaryExplanation:`Needs second unit.`},
     {id:'b003',maxMarks:1,question:`Mr Tan giving sweets: 12 each needs 38 more; 14 each needs 58 more. How many students?`,solution:`10`,studentAnswer:`10`,correctMark:1,aiMark:1,aiConfidence:'high',stagedExplanation:`Answer correct.`,summaryExplanation:`Fully correct.`},
