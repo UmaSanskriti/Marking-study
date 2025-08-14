@@ -1,10 +1,21 @@
 // Core data for questions
 const questions = [];
-for (let i = 1; i <= 32; i++) {
-  const part = i <= 8 ? 1 : 2;
-  const explanationType = i % 2 === 0 ? "summary" : "staged";
+for (let i = 1; i <= 40; i++) {
+  let part;
+  if (i <= 8) part = "1";
+  else if (i <= 24) part = "2a";
+  else part = "2b";
+
+  const explanationType =
+    part === "2a"
+      ? "summary"
+      : part === "2b"
+      ? "staged"
+      : i % 2 === 0
+      ? "summary"
+      : "staged";
   const maxMarks = ((i - 1) % 4) + 1; // cycles 1-4
-  const questionText = `Question ${i}: Placeholder text`;
+  const questionText = `Question ${i}: Placeholder text for Part ${part}`;
   const solutionText = `Solution for question ${i}`;
   const studentAnswer = `Student answer for question ${i}`;
   const goldMark = Math.floor(Math.random() * (maxMarks + 1));
@@ -44,7 +55,7 @@ function renderQuestion() {
     return;
   }
   const q = questions[current];
-  if (q.part === 2 && timeLeft === 0) startTimer(30 * 60);
+  if (q.part !== "1" && timeLeft === 0) startTimer(30 * 60);
 
   qContainer.innerHTML = `
     <h2>Question ${q.id} (Part ${q.part})</h2>
@@ -87,7 +98,7 @@ function handleSelfMark(q) {
     if (isNaN(mark)) return alert("Enter a mark");
     const record = { questionId: q.id, part: q.part, choice: "self", finalMark: mark };
 
-    if (q.part === 1) {
+    if (q.part === "1") {
       const ai = simulateAiMark(q);
       record.aiMark = ai.aiMark;
       record.aiConfidence = ai.confidence;
