@@ -1,4 +1,4 @@
-# Vibe-coding Study Prototype
+# Marking Study Prototype
 
 This repository contains a static prototype website for exploring how teachers interact with AI-assisted marking.
 
@@ -7,7 +7,7 @@ This repository contains a static prototype website for exploring how teachers i
 Clone the repository and open `index.html` in a modern web browser. The study includes:
 
 - **Part 1:** Familiarisation with AI marking across 8 sample questions.
-- **Part 2:** Timed marking session with 24 questions where teachers can mark themselves or delegate to AI.
+- **Part 2:** Timed marking session with 32 questions (16 in each block) where teachers can mark themselves or delegate to AI.
 
 Each question allows teachers to choose between marking themselves or using AI-generated marks with high/low confidence and staged vs. summarised explanations. Results and a bonus tied to accuracy are shown at the end.
 
@@ -15,4 +15,5 @@ Each question allows teachers to choose between marking themselves or using AI-g
 
 - Verify the JavaScript syntax with `npm test`.
 - No build step is required; the site is fully static.
+- Run tests from the repository root so `npm` can locate `package.json`.
 
