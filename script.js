@@ -1,9 +1,35 @@
-let questions = questionDB.part1.map((q, idx) => ({
-  ...q,
-  part: 1,
-  explanationType: idx % 2 === 0 ? 'staged' : 'summary'
-}));
+// Core data for questions
+const questions = [];
+for (let i = 1; i <= 40; i++) {
+  let part;
+  if (i <= 8) part = "1";
+  else if (i <= 24) part = "2a";
+  else part = "2b";
 
+  const explanationType =
+    part === "2a"
+      ? "summary"
+      : part === "2b"
+      ? "staged"
+      : i % 2 === 0
+      ? "summary"
+      : "staged";
+  const maxMarks = ((i - 1) % 4) + 1; // cycles 1-4
+  const questionText = `Question ${i}: Placeholder text for Part ${part}`;
+  const solutionText = `Solution for question ${i}`;
+  const studentAnswer = `Student answer for question ${i}`;
+  const goldMark = Math.floor(Math.random() * (maxMarks + 1));
+  questions.push({
+    id: i,
+    part,
+    explanationType,
+    maxMarks,
+    question: questionText,
+    solution: solutionText,
+    studentAnswer,
+    goldMark,
+  });
+}
 
 let current = 0;
 let results = [];
@@ -35,7 +61,7 @@ function renderQuestion() {
     return;
   }
   const q = questions[current];
-  if (q.part === 2 && timeLeft === 0) startTimer(30 * 60);
+  if (q.part !== "1" && timeLeft === 0) startTimer(30 * 60);
 
   questionStartTime = Date.now();
   currentRecord = {
@@ -97,18 +123,13 @@ function handleSelfMark(q) {
     currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
     const mark = Number(markInput.value);
     if (isNaN(mark)) return alert("Enter a mark");
-    currentRecord.choice = "self";
-    currentRecord.finalMark = mark;
-    currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
-    currentRecord.delegated = false;
-    if (q.part === 1) {
-      const ai = getAi(q);
-      currentRecord.aiMark = ai.aiMark;
-      currentRecord.aiConfidence = ai.confidence;
+    const record = { questionId: q.id, part: q.part, choice: "self", finalMark: mark };
 
-      qContainer.innerHTML = `
-        <h2>Question ${q.id} (Part ${q.part})</h2>
-        <p><strong>Your Mark:</strong> ${mark} / ${q.maxMarks}</p>
+    if (q.part === "1") {
+      const ai = simulateAiMark(q);
+      record.aiMark = ai.aiMark;
+      record.aiConfidence = ai.confidence;
+      explanationDiv.innerHTML = `
         <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
         <p><strong>Confidence:</strong> ${ai.confidence}</p>
         <button id="view-exp">View Explanation</button>
