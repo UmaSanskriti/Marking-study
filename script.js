@@ -1,4 +1,4 @@
-import { questionDB } from './questions.js';
+// questions.js adds questionDB to the global scope
 
 // Load part 1 questions initially, alternating explanation styles
 let questions = questionDB.part1.map((q, idx) => ({

@@ -1,4 +1,4 @@
-const questionDB = {
+window.questionDB = {
   part1: [
     {id:'i001',maxMarks:1,question:`When it is 09 00 in Singapore, it is 11 00 in Melbourne. Madam Rohaya called her husband who was working in Melbourne at 01 30 Singapore time. What was the time in Melbourne when Madam Rohaya called her husband?`,solution:`09 00 → 11 00 (Melbourne is 2h ahead)
 01 30 → 03 30
@@ -61,4 +61,3 @@ Difference $100`,studentAnswer:`Diff 100`,correctMark:3,aiMark:3,aiConfidence:'h
     {id:'b016',maxMarks:4,question:`Ahmad paid 2 $10 notes and 3 $2 notes for snacks costing $24.40. Change given in 50c and 20c coins. How many coins did he receive?`,solution:`5`,studentAnswer:`$1.60`,correctMark:2,aiMark:1,aiConfidence:'low',stagedExplanation:`Total paid not shown; coin breakdown missing; final answer is value not count.`,summaryExplanation:`He received 5 coins (two 50c and three 20c).`}
   ]
 };
-export { questionDB };
