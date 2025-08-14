@@ -15,4 +15,5 @@ Each question allows teachers to choose between marking themselves or using AI-g
 
 - Verify the JavaScript syntax with `npm test`.
 - No build step is required; the site is fully static.
+- Run tests from the repository root so `npm` can locate `package.json`.
 
