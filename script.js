@@ -1,25 +1,11 @@
-// Core data for questions
-const questions = [];
-// 8 questions for part 1 and 24 for part 2
-for (let i = 1; i <= 32; i++) {
-  const part = i <= 8 ? 1 : 2;
-  const explanationType = i % 2 === 0 ? "summary" : "staged";
-  const maxMarks = ((i - 1) % 4) + 1; // cycles 1-4
-  const questionText = `Question ${i}: Placeholder text`;
-  const solutionText = `Solution for question ${i}`;
-  const studentAnswer = `Student answer for question ${i}`;
-  const goldMark = Math.floor(Math.random() * (maxMarks + 1));
-  questions.push({
-    id: i,
-    part,
-    explanationType,
-    maxMarks,
-    question: questionText,
-    solution: solutionText,
-    studentAnswer,
-    goldMark,
-  });
-}
+import { questionDB } from './questions.js';
+
+// Load part 1 questions initially, alternating explanation styles
+let questions = questionDB.part1.map((q, idx) => ({
+  ...q,
+  part: 1,
+  explanationType: idx % 2 === 0 ? 'staged' : 'summary'
+}));
 
 let current = 0;
 let results = [];
@@ -68,7 +54,7 @@ function renderQuestion() {
     question: q.question,
     solution: q.solution,
     studentAnswer: q.studentAnswer,
-    goldMark: q.goldMark,
+    goldMark: q.correctMark,
     actions: [],
   };
 
@@ -122,9 +108,8 @@ function handleSelfMark(q) {
     currentRecord.finalMark = mark;
     currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
     currentRecord.delegated = false;
-
     if (q.part === 1) {
-      const ai = simulateAiMark(q);
+      const ai = getAi(q);
       currentRecord.aiMark = ai.aiMark;
       currentRecord.aiConfidence = ai.confidence;
 
@@ -151,7 +136,7 @@ function handleSelfMark(q) {
         renderQuestion();
       };
     } else {
-      const ai = simulateAiMark(q);
+      const ai = getAi(q);
       currentRecord.aiMark = ai.aiMark;
       currentRecord.aiConfidence = ai.confidence;
       results.push(currentRecord);
@@ -162,7 +147,7 @@ function handleSelfMark(q) {
 }
 
 function handleAIMark(q) {
-  const ai = simulateAiMark(q);
+  const ai = getAi(q);
   currentRecord.choice = "ai";
   currentRecord.aiMark = ai.aiMark;
   currentRecord.aiConfidence = ai.confidence;
@@ -200,38 +185,12 @@ function handleAIMark(q) {
   };
 }
 
-function simulateAiMark(q) {
-  const accuracy = { 1: 0.982, 2: 0.92, 3: 0.86, 4: 0.82 };
-  const lowConf = { 1: 0.05, 2: 0.07, 3: 0.08, 4: 0.1 };
-  const acc = accuracy[q.maxMarks];
-  let aiMark;
-  if (Math.random() < acc) {
-    aiMark = q.goldMark;
-  } else {
-    do {
-      aiMark = Math.floor(Math.random() * (q.maxMarks + 1));
-    } while (aiMark === q.goldMark);
-  }
-  const confidence = Math.random() < lowConf[q.maxMarks] ? "low" : "high";
-  return { aiMark, confidence };
+function getAi(q) {
+  return { aiMark: q.aiMark, confidence: q.aiConfidence };
 }
 
 function getExplanation(q) {
-  if (q.explanationType === "staged") {
-    return `
-      <h3>Staged Explanation</h3>
-      <ol>
-        <li>Marking guideline extracted for Q${q.id}.</li>
-        <li>Rubric used with max ${q.maxMarks} marks.</li>
-        <li>AI rationale relating answer to rubric.</li>
-      </ol>
-    `;
-  } else {
-    return `
-      <h3>Summary Explanation</h3>
-      <p>AI considered key points and compared to rubric to assign marks.</p>
-    `;
-  }
+  return q.explanationType === "staged" ? q.stagedExplanation : q.summaryExplanation;
 }
 
 function showPartSummary(part, final = false) {
@@ -263,14 +222,30 @@ function showPartSummary(part, final = false) {
   summaryDiv.innerHTML = html;
   summaryDiv.classList.remove("hidden");
   if (!final && part === 1) {
-    const nextBtn = document.createElement("button");
-    nextBtn.textContent = "Start Part 2";
-    nextBtn.onclick = () => {
-      summaryDiv.classList.add("hidden");
-      renderQuestion();
-    };
-    summaryDiv.appendChild(nextBtn);
+    const picker = document.createElement("div");
+    picker.innerHTML = `<p>Select experiment variant for Part 2:</p>`;
+    ["L1","L2","L3","L4"].forEach(label => {
+      const btn = document.createElement("button");
+      btn.textContent = label;
+      btn.onclick = () => setupPart2(label);
+      picker.appendChild(btn);
+    });
+    summaryDiv.appendChild(picker);
   }
+}
+
+function setupPart2(label) {
+  const config = {
+    L1: { order: ["part2a", "part2b"], types: { part2a: "staged", part2b: "summary" } },
+    L2: { order: ["part2a", "part2b"], types: { part2a: "summary", part2b: "staged" } },
+    L3: { order: ["part2b", "part2a"], types: { part2a: "staged", part2b: "summary" } },
+    L4: { order: ["part2b", "part2a"], types: { part2a: "summary", part2b: "staged" } },
+  }[label];
+  const build = name => questionDB[name].map(q => ({ ...q, part: 2, explanationType: config.types[name] }));
+  const newQs = config.order.flatMap(build);
+  questions = questions.concat(newQs);
+  summaryDiv.classList.add("hidden");
+  renderQuestion();
 }
 
 function startTimer(seconds) {

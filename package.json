@@ -1,6 +1,7 @@
 {
   "name": "marking-study",
   "version": "1.0.0",
+  "type": "module",
   "description": "Prototype website for AI-assisted teacher marking study",
   "scripts": {
     "test": "node --check script.js"
