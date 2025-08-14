@@ -1,4 +1,4 @@
-# Vibe-coding Study Prototype
+# Marking Study Prototype
 
 This repository contains a static prototype website for exploring how teachers interact with AI-assisted marking.
 
@@ -15,4 +15,5 @@ Each question allows teachers to choose between marking themselves or using AI-g
 
 - Verify the JavaScript syntax with `npm test`.
 - No build step is required; the site is fully static.
+- Run tests from the repository root so `npm` can locate `package.json`.
 
