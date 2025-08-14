@@ -1,40 +1,14 @@
 // Core data for questions
-const questions = [];
-for (let i = 1; i <= 40; i++) {
-  let part;
-  if (i <= 8) part = "1";
-  else if (i <= 24) part = "2a";
-  else part = "2b";
-
-  const explanationType =
-    part === "2a"
-      ? "summary"
-      : part === "2b"
-      ? "staged"
-      : i % 2 === 0
-      ? "summary"
-      : "staged";
-  const maxMarks = ((i - 1) % 4) + 1; // cycles 1-4
-  const questionText = `Question ${i}: Placeholder text for Part ${part}`;
-  const solutionText = `Solution for question ${i}`;
-  const studentAnswer = `Student answer for question ${i}`;
-  const goldMark = Math.floor(Math.random() * (maxMarks + 1));
-  questions.push({
-    id: i,
-    part,
-    explanationType,
-    maxMarks,
-    question: questionText,
-    solution: solutionText,
-    studentAnswer,
-    goldMark,
-  });
-}
+let questions = questionDB.part1.map(q => ({ ...q, part: 1 }));
 
 let current = 0;
 let results = [];
 let timerInterval;
 let timeLeft = 0;
+let part1SummaryShown = false;
+let questionStartTime;
+let currentRecord;
+let userName = "";
 
 const intro = document.getElementById("intro");
 const timerDiv = document.getElementById("timer");
@@ -43,6 +17,7 @@ const explanationDiv = document.getElementById("explanation-container");
 const summaryDiv = document.getElementById("summary");
 
 function startStudy() {
+  userName = document.getElementById("user-name").value.trim() || "Anonymous";
   intro.classList.add("hidden");
   renderQuestion();
 }
@@ -73,7 +48,7 @@ function renderQuestion() {
     question: q.question,
     solution: q.solution,
     studentAnswer: q.studentAnswer,
-    goldMark: q.correctMark,
+    goldMark: q.correctMark ?? q.goldMark,
     actions: [],
   };
 
@@ -119,45 +94,48 @@ function handleSelfMark(q) {
   submitBtn.textContent = "Submit";
   qContainer.appendChild(submitBtn);
 
-  submitBtn.onclick = () => {
-    currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
-    const mark = Number(markInput.value);
-    if (isNaN(mark)) return alert("Enter a mark");
-    const record = { questionId: q.id, part: q.part, choice: "self", finalMark: mark };
+    submitBtn.onclick = () => {
+      currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
+      const mark = Number(markInput.value);
+      if (isNaN(mark)) return alert("Enter a mark");
+      currentRecord.choice = "self";
+      currentRecord.finalMark = mark;
 
-    if (q.part === "1") {
-      const ai = simulateAiMark(q);
-      record.aiMark = ai.aiMark;
-      record.aiConfidence = ai.confidence;
-      explanationDiv.innerHTML = `
-        <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
-        <p><strong>Confidence:</strong> ${ai.confidence}</p>
-        <button id="view-exp">View Explanation</button>
-        <button id="next-q">Next</button>
-      `;
-      explanationDiv.classList.add("hidden");
-      let viewed = false;
-      document.getElementById("view-exp").onclick = () => {
-        currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
-        explanationDiv.innerHTML = getExplanation(q);
+      if (q.part === "1") {
+        const ai = simulateAiMark(q);
+        currentRecord.aiMark = ai.aiMark;
+        currentRecord.aiConfidence = ai.confidence;
+        qContainer.classList.add("hidden");
+        explanationDiv.innerHTML = `
+          <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
+          <p><strong>Confidence:</strong> ${ai.confidence}</p>
+          <button id="view-exp">View Explanation</button>
+          <button id="next-q">Next</button>
+        `;
         explanationDiv.classList.remove("hidden");
-        viewed = true;
-      };
-      document.getElementById("next-q").onclick = () => {
-        currentRecord.viewedExplanation = viewed;
+        let viewed = false;
+        document.getElementById("view-exp").onclick = () => {
+          currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
+          const exp = document.createElement("div");
+          exp.innerHTML = getExplanation(q);
+          explanationDiv.appendChild(exp);
+          viewed = true;
+        };
+        document.getElementById("next-q").onclick = () => {
+          currentRecord.viewedExplanation = viewed;
+          results.push(currentRecord);
+          current++;
+          renderQuestion();
+        };
+      } else {
+        const ai = getAi(q);
+        currentRecord.aiMark = ai.aiMark;
+        currentRecord.aiConfidence = ai.confidence;
         results.push(currentRecord);
         current++;
         renderQuestion();
-      };
-    } else {
-      const ai = getAi(q);
-      currentRecord.aiMark = ai.aiMark;
-      currentRecord.aiConfidence = ai.confidence;
-      results.push(currentRecord);
-      current++;
-      renderQuestion();
-    }
-  };
+      }
+    };
 }
 
 function handleAIMark(q) {
@@ -199,6 +177,13 @@ function handleAIMark(q) {
   };
 }
 
+function simulateAiMark(q) {
+  const aiMark = Math.floor(Math.random() * (q.maxMarks + 1));
+  const levels = ["low", "medium", "high"];
+  const confidence = levels[Math.floor(Math.random() * levels.length)];
+  return { aiMark, confidence };
+}
+
 function getAi(q) {
   return { aiMark: q.aiMark, confidence: q.aiConfidence };
 }
@@ -211,7 +196,7 @@ function showPartSummary(part, final = false) {
   qContainer.classList.add("hidden");
   explanationDiv.classList.add("hidden");
 
-  const partResults = results.filter(r => r.part === part);
+  const partResults = results.filter(r => r.part == part);
   const rows = partResults
     .map(r => {
       const aiMark = r.aiMark !== undefined ? r.aiMark : "-";
@@ -257,7 +242,7 @@ function setupPart2(label) {
   }[label];
   const build = name => questionDB[name].map(q => ({ ...q, part: 2, explanationType: config.types[name] }));
   const newQs = config.order.flatMap(build);
-  questions = questions.concat(newQs);
+  questions.push(...newQs);
   summaryDiv.classList.add("hidden");
   renderQuestion();
 }
