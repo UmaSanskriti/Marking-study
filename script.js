@@ -1,5 +1,18 @@
 // Core data for questions
-let questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
+let questionDB = null;
+let questions = [];
+
+const startBtn = document.getElementById("start-btn");
+startBtn.disabled = true;
+
+async function loadQuestions() {
+  const res = await fetch('/questions');
+  questionDB = await res.json();
+  questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
+  startBtn.disabled = false;
+}
+
+loadQuestions();
 
 let current = 0;
 let results = [];
@@ -17,6 +30,10 @@ const qContainer = document.getElementById("question-container");
 const explanationDiv = document.getElementById("explanation-container");
 const summaryDiv = document.getElementById("summary");
 const variantPicker = document.getElementById("variant-picker");
+
+function formatText(t) {
+  return (t || '').replace(/!\[.*?\]\((.*?)\)/g, '<img src="$1" alt="Question image">').replace(/\n/g, '<br>');
+}
 
 function startStudy() {
   userName = document.getElementById("user-name").value.trim() || "Anonymous";
@@ -64,9 +81,9 @@ function renderQuestion() {
 
   qContainer.innerHTML = `
     <h2>Question ${q.id} (Part ${q.part})</h2>
-    <p><strong>Question:</strong> ${q.question}</p>
-    <p><strong>Solution:</strong> ${q.solution}</p>
-    <p><strong>Student Answer:</strong> ${q.studentAnswer}</p>
+    <p><strong>Question:</strong> ${formatText(q.question)}</p>
+    <p><strong>Solution:</strong> ${formatText(q.solution)}</p>
+    <p><strong>Student Answer:</strong> ${formatText(q.studentAnswer)}</p>
     <p><strong>Max Marks:</strong> ${q.maxMarks}</p>
     <button id="self-mark">Mark Myself</button>
     <button id="ai-mark">Use AI</button>
@@ -93,9 +110,9 @@ function handleSelfMark(q) {
 
   qContainer.innerHTML = `
     <h2>Question ${q.id} (Part ${q.part})</h2>
-    <p><strong>Question:</strong> ${q.question}</p>
-    <p><strong>Solution:</strong> ${q.solution}</p>
-    <p><strong>Student Answer:</strong> ${q.studentAnswer}</p>
+    <p><strong>Question:</strong> ${formatText(q.question)}</p>
+    <p><strong>Solution:</strong> ${formatText(q.solution)}</p>
+    <p><strong>Student Answer:</strong> ${formatText(q.studentAnswer)}</p>
     <p><strong>Max Marks:</strong> ${q.maxMarks}</p>
     <p>Enter your mark:</p>
   `;
@@ -202,11 +219,11 @@ function getAi(q) {
 
 function getExplanation(q) {
   if (q.explanationType === "staged") {
-    const rubric = q.rubricJson ? `<pre>${q.rubricJson}</pre>` : "";
-    const guideline = q.markingGuideline ? `<pre>${q.markingGuideline}</pre>` : "";
-    return `<p>${q.stagedExplanation}</p>${rubric}${guideline}`;
+    const rubric = q.rubricJson ? `<pre>${formatText(q.rubricJson)}</pre>` : "";
+    const guideline = q.markingGuideline ? `<pre>${formatText(q.markingGuideline)}</pre>` : "";
+    return `<p>${formatText(q.stagedExplanation)}</p>${rubric}${guideline}`;
   }
-  return `<p>${q.summaryExplanation}</p>`;
+  return `<p>${formatText(q.summaryExplanation)}</p>`;
 }
 
 function showPartSummary(part, final = false) {
