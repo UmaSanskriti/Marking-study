@@ -27,7 +27,6 @@ async function loadQuestions() {
 }
 
 nameInput.addEventListener('input', checkReady);
-
 loadQuestions();
 
 let current = 0;
