@@ -12,23 +12,34 @@ function checkReady() {
 
 checkReady();
 
-  async function loadQuestions() {
+async function loadQuestions() {
   try {
     let res;
     try {
+      // Try the static file first (works when bundled/dist’d)
       res = await fetch('questions.json');
       if (!res.ok) throw new Error('Status ' + res.status);
     } catch (err) {
       console.warn('Local questions.json fetch failed:', err);
+
+      // Fallbacks:
+      // - file:// pages have origin === 'null' → assume dev server on 3000
+      // - localhost (any port) → hit that same origin
+      // - any other origin → try same-origin /questions route
       const origin = window.location.origin;
-      if (origin === 'null' || origin.includes('localhost')) {
-        const base = origin === 'null' ? 'http://localhost:3000' : origin;
-        res = await fetch(base + '/questions');
-        if (!res.ok) throw new Error('Status ' + res.status);
+      let base = '';
+      if (origin === 'null') {
+        base = 'http://localhost:3000';
+      } else if (origin.includes('localhost')) {
+        base = origin; // preserve port, e.g. http://localhost:5173
       } else {
-        throw err;
+        base = ''; // same-origin
       }
+
+      res = await fetch(base + '/questions');
+      if (!res.ok) throw new Error('Status ' + res.status + ' from ' + (base || location.origin) + '/questions');
     }
+
     questionDB = await res.json();
     questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
     dataLoaded = true;
@@ -149,50 +160,50 @@ function handleSelfMark(q) {
   submitBtn.textContent = "Submit";
   qContainer.appendChild(submitBtn);
 
-    submitBtn.onclick = () => {
-      currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
-      const mark = Number(markInput.value);
-      if (isNaN(mark)) return alert("Enter a mark");
-      currentRecord.choice = "self";
-      currentRecord.finalMark = mark;
+  submitBtn.onclick = () => {
+    currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
+    const mark = Number(markInput.value);
+    if (isNaN(mark)) return alert("Enter a mark");
+    currentRecord.choice = "self";
+    currentRecord.finalMark = mark;
 
-      if (q.part === "1") {
-        const ai = simulateAiMark(q);
-        currentRecord.aiMark = ai.aiMark;
-        currentRecord.aiConfidence = ai.confidence;
-        qContainer.classList.add("hidden");
-        explanationDiv.innerHTML = `
-          <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
-          <p><strong>Confidence:</strong> ${ai.confidence}</p>
-          <button id="view-exp">View Explanation</button>
-          <button id="next-q">Next</button>
-        `;
-        explanationDiv.classList.remove("hidden");
-        let viewed = false;
-        document.getElementById("view-exp").onclick = () => {
-          currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
-          const exp = document.createElement("div");
-          exp.innerHTML = getExplanation(q);
-          explanationDiv.appendChild(exp);
-          viewed = true;
-        };
-        document.getElementById("next-q").onclick = () => {
-          currentRecord.viewedExplanation = viewed;
-          currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
-          results.push(currentRecord);
-          current++;
-          renderQuestion();
-        };
-      } else {
-        const ai = getAi(q);
-        currentRecord.aiMark = ai.aiMark;
-        currentRecord.aiConfidence = ai.confidence;
+    if (q.part === "1") {
+      const ai = simulateAiMark(q);
+      currentRecord.aiMark = ai.aiMark;
+      currentRecord.aiConfidence = ai.confidence;
+      qContainer.classList.add("hidden");
+      explanationDiv.innerHTML = `
+        <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
+        <p><strong>Confidence:</strong> ${ai.confidence}</p>
+        <button id="view-exp">View Explanation</button>
+        <button id="next-q">Next</button>
+      `;
+      explanationDiv.classList.remove("hidden");
+      let viewed = false;
+      document.getElementById("view-exp").onclick = () => {
+        currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
+        const exp = document.createElement("div");
+        exp.innerHTML = getExplanation(q);
+        explanationDiv.appendChild(exp);
+        viewed = true;
+      };
+      document.getElementById("next-q").onclick = () => {
+        currentRecord.viewedExplanation = viewed;
         currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
         results.push(currentRecord);
         current++;
         renderQuestion();
-      }
-    };
+      };
+    } else {
+      const ai = getAi(q);
+      currentRecord.aiMark = ai.aiMark;
+      currentRecord.aiConfidence = ai.confidence;
+      currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
+      results.push(currentRecord);
+      current++;
+      renderQuestion();
+    }
+  };
 }
 
 function handleAIMark(q) {
