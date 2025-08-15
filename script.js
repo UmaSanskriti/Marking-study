@@ -12,8 +12,67 @@ function checkReady() {
 
 checkReady();
 
+function parseCsv(text) {
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (ch === ',' && !inQuotes) {
+      row.push(field);
+      field = '';
+    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (ch === '\r' && text[i + 1] === '\n') i++;
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = '';
+    } else {
+      field += ch;
+    }
+  }
+  if (field || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+  const header = rows.shift();
+  return rows.map(r => Object.fromEntries(header.map((h, i) => [h, r[i]])));
+}
+
 async function loadQuestions() {
   try {
+    let csvRes;
+    try {
+      csvRes = await fetch('Part 1.csv');
+      if (!csvRes.ok) throw new Error('Status ' + csvRes.status);
+    } catch {
+      const base = window.location.origin === 'null' ? 'http://localhost:3000' : '';
+      csvRes = await fetch(base + '/Part%201.csv');
+    }
+    let csvText = await csvRes.text();
+    csvText = csvText.replace(/\r?\nAI Marker's Summarised Explanation/, "AI Marker's Summarised Explanation");
+    const rows = parseCsv(csvText);
+    const part1 = rows.map(r => ({
+      id: r['Question ID'],
+      maxMarks: Number(r['max_marks']),
+      question: r['full_question'],
+      solution: r['solution'],
+      studentAnswer: r['student_answer'],
+      correctMark: Number(r['Correct marks']),
+      aiMark: Number(r['AI Marks']),
+      aiConfidence: r['AI mark label'],
+      stagedExplanation: r["AI Marker's Staged Explanation"],
+      summaryExplanation: r["AI Marker's Summarised Explanation"],
+      rubricJson: r['rubric_json'],
+      markingGuideline: r['extracted_marking_guideline']
+    }));
+
     let res;
     try {
       res = await fetch('questions.json');
@@ -22,8 +81,9 @@ async function loadQuestions() {
       const base = window.location.origin === 'null' ? 'http://localhost:3000' : '';
       res = await fetch(base + '/questions');
     }
-    questionDB = await res.json();
-    questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
+    const db = await res.json();
+    questionDB = { ...db, part1 };
+    questions = part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
     dataLoaded = true;
   } catch (e) {
     console.error('Failed to load questions', e);
@@ -56,6 +116,12 @@ function formatText(t) {
   return (t || '').replace(/!\[.*?\]\((.*?)\)/g, '<img src="$1" alt="Question image">').replace(/\n/g, '<br>');
 }
 
+function typeset() {
+  if (window.MathJax?.typesetPromise) {
+    MathJax.typesetPromise();
+  }
+}
+
 function startStudy() {
   userName = nameInput.value.trim() || "Anonymous";
   intro.classList.add("hidden");
@@ -73,14 +139,13 @@ variantPicker.querySelectorAll('button').forEach(btn => {
 });
 
 function renderQuestion() {
-  if (current >= questions.length) {
-    endStudy();
-    return;
-  }
-
   if (current === 8 && !part1SummaryShown) {
     part1SummaryShown = true;
     showPartSummary(1);
+    return;
+  }
+  if (current >= questions.length) {
+    endStudy();
     return;
   }
   const q = questions[current];
@@ -109,6 +174,7 @@ function renderQuestion() {
     <button id="self-mark">Mark Myself</button>
     <button id="ai-mark">Use AI</button>
   `;
+  typeset();
   qContainer.classList.remove("hidden");
   explanationDiv.classList.add("hidden");
 
@@ -137,6 +203,7 @@ function handleSelfMark(q) {
     <p><strong>Max Marks:</strong> ${q.maxMarks}</p>
     <p>Enter your mark:</p>
   `;
+  typeset();
   qContainer.appendChild(markInput);
   const submitBtn = document.createElement("button");
   submitBtn.textContent = "Submit";
@@ -150,7 +217,7 @@ function handleSelfMark(q) {
       currentRecord.finalMark = mark;
 
       if (q.part === "1") {
-        const ai = simulateAiMark(q);
+        const ai = getAi(q);
         currentRecord.aiMark = ai.aiMark;
         currentRecord.aiConfidence = ai.confidence;
         qContainer.classList.add("hidden");
@@ -161,12 +228,14 @@ function handleSelfMark(q) {
           <button id="next-q">Next</button>
         `;
         explanationDiv.classList.remove("hidden");
+        typeset();
         let viewed = false;
         document.getElementById("view-exp").onclick = () => {
           currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
           const exp = document.createElement("div");
           exp.innerHTML = getExplanation(q);
           explanationDiv.appendChild(exp);
+          typeset();
           viewed = true;
         };
         document.getElementById("next-q").onclick = () => {
@@ -202,6 +271,7 @@ function handleAIMark(q) {
     <button id="view-exp">View Explanation</button>
     <button id="submit-mark">Submit</button>
   `;
+  typeset();
   explanationDiv.classList.add("hidden");
   qContainer.classList.remove("hidden");
 
@@ -211,6 +281,7 @@ function handleAIMark(q) {
     explanationDiv.innerHTML = getExplanation(q);
     explanationDiv.classList.remove("hidden");
     viewedExplanation = true;
+    typeset();
   };
 
   document.getElementById("submit-mark").onclick = () => {
@@ -225,13 +296,6 @@ function handleAIMark(q) {
     current++;
     renderQuestion();
   };
-}
-
-function simulateAiMark(q) {
-  const aiMark = Math.floor(Math.random() * (q.maxMarks + 1));
-  const levels = ["low", "medium", "high"];
-  const confidence = levels[Math.floor(Math.random() * levels.length)];
-  return { aiMark, confidence };
 }
 
 function getAi(q) {
@@ -275,6 +339,7 @@ function showPartSummary(part, final = false) {
   }
   summaryDiv.innerHTML = html;
   summaryDiv.classList.remove("hidden");
+  typeset();
   if (!final && part === 1) {
     const nextBtn = document.createElement("button");
     nextBtn.textContent = "Start Part 2";
