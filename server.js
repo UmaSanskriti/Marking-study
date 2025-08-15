@@ -89,6 +89,7 @@ const server = http.createServer((req, res) => {
   const parsed = url.parse(req.url);
   if (parsed.pathname === '/questions') {
     res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.end(JSON.stringify(questions));
     return;
   }
