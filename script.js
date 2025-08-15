@@ -3,15 +3,29 @@ let questionDB = null;
 let questions = [];
 
 const startBtn = document.getElementById("start-btn");
-startBtn.disabled = true;
+const nameInput = document.getElementById("user-name");
+let dataLoaded = false;
 
-async function loadQuestions() {
-  const res = await fetch('/questions');
-  questionDB = await res.json();
-  questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
-  startBtn.disabled = false;
+function checkReady() {
+  startBtn.disabled = !(dataLoaded && nameInput.value.trim());
 }
 
+checkReady();
+
+async function loadQuestions() {
+  try {
+    const res = await fetch('/questions');
+    questionDB = await res.json();
+    questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
+    dataLoaded = true;
+  } catch (e) {
+    console.error('Failed to load questions', e);
+  } finally {
+    checkReady();
+  }
+}
+
+nameInput.addEventListener('input', checkReady);
 loadQuestions();
 
 let current = 0;
@@ -36,7 +50,7 @@ function formatText(t) {
 }
 
 function startStudy() {
-  userName = document.getElementById("user-name").value.trim() || "Anonymous";
+  userName = nameInput.value.trim() || "Anonymous";
   intro.classList.add("hidden");
   variantPicker.classList.remove("hidden");
 }
