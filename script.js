@@ -113,12 +113,15 @@ const summaryDiv = document.getElementById("summary");
 const variantPicker = document.getElementById("variant-picker");
 
 function formatText(t) {
-  return (t || '').replace(/!\[.*?\]\((.*?)\)/g, '<img src="$1" alt="Question image">').replace(/\n/g, '<br>');
+  const html = (t || '')
+    .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">')
+    .replace(/\n/g, '<br>');
+  return DOMPurify.sanitize(html);
 }
 
-function typeset() {
+function typeset(element) {
   if (window.MathJax?.typesetPromise) {
-    MathJax.typesetPromise();
+    MathJax.typesetPromise(element ? [element] : undefined);
   }
 }
 
@@ -174,7 +177,7 @@ function renderQuestion() {
     <button id="self-mark">Mark Myself</button>
     <button id="ai-mark">Use AI</button>
   `;
-  typeset();
+  typeset(qContainer);
   qContainer.classList.remove("hidden");
   explanationDiv.classList.add("hidden");
 
@@ -203,7 +206,7 @@ function handleSelfMark(q) {
     <p><strong>Max Marks:</strong> ${q.maxMarks}</p>
     <p>Enter your mark:</p>
   `;
-  typeset();
+  typeset(qContainer);
   qContainer.appendChild(markInput);
   const submitBtn = document.createElement("button");
   submitBtn.textContent = "Submit";
@@ -226,16 +229,16 @@ function handleSelfMark(q) {
           <p><strong>Confidence:</strong> ${ai.confidence}</p>
           <button id="view-exp">View Explanation</button>
           <button id="next-q">Next</button>
-        `;
-        explanationDiv.classList.remove("hidden");
-        typeset();
+          `;
+          explanationDiv.classList.remove("hidden");
+          typeset(explanationDiv);
         let viewed = false;
         document.getElementById("view-exp").onclick = () => {
           currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
-          const exp = document.createElement("div");
-          exp.innerHTML = getExplanation(q);
-          explanationDiv.appendChild(exp);
-          typeset();
+            const exp = document.createElement("div");
+            exp.innerHTML = getExplanation(q);
+            explanationDiv.appendChild(exp);
+            typeset(exp);
           viewed = true;
         };
         document.getElementById("next-q").onclick = () => {
@@ -270,18 +273,18 @@ function handleAIMark(q) {
     <label>Final mark: <input type="number" id="final-mark" min="0" max="${q.maxMarks}" value="${ai.aiMark}" /></label>
     <button id="view-exp">View Explanation</button>
     <button id="submit-mark">Submit</button>
-  `;
-  typeset();
+    `;
+    typeset(qContainer);
   explanationDiv.classList.add("hidden");
   qContainer.classList.remove("hidden");
 
   let viewedExplanation = false;
   document.getElementById("view-exp").onclick = () => {
     currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
-    explanationDiv.innerHTML = getExplanation(q);
-    explanationDiv.classList.remove("hidden");
-    viewedExplanation = true;
-    typeset();
+      explanationDiv.innerHTML = getExplanation(q);
+      explanationDiv.classList.remove("hidden");
+      viewedExplanation = true;
+      typeset(explanationDiv);
   };
 
   document.getElementById("submit-mark").onclick = () => {
@@ -339,7 +342,7 @@ function showPartSummary(part, final = false) {
   }
   summaryDiv.innerHTML = html;
   summaryDiv.classList.remove("hidden");
-  typeset();
+  typeset(summaryDiv);
   if (!final && part === 1) {
     const nextBtn = document.createElement("button");
     nextBtn.textContent = "Start Part 2";
