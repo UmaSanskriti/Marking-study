@@ -1,0 +1,1000 @@
+Question ID,max_marks,full_question,solution,student_answer,Correct marks,AI Marks,AI Confidence,AI Marker's Summarised Explanation,AI Marker's Staged Explanation,rubric_json,extracted_marking_guideline
+a001,1,"The figure below is made up of a semi-circle and a rectangle. A
+smaller circle fits in the middle of the semi-circle. 2 quarter
+circles are enclosed within the rectangle. Find the area of the
+unshaded region. (Take $\pi$ to be $\frac{22}{7}$)<br>The use of calculators is NOT allowed.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/10985a_qsn_img_0_1656902857.svg)","Area of 2 big quarter circles of radius 14 cm 
+$= \frac{1}{2} \pi r^{2} $
+$= \frac{1}{2} \times \frac{22}{7} \times$ 14 cm $\times$ 14 cm 
+$=$ 308  cm$^{2}$
+Area of small circle of radius 7 cm $= \pi r^{2}$  
+$= \frac{22}{7} \times$ 7 cm $\times$ 7 cm $=$ 154  cm$^{2}$
+Total area of the unshaded region 
+$=$ 308 cm$^2$ $+$ 154 cm$^2$ 
+$=$ 462 cm$^{2} $
+
+Ans: 462 cm$^2$",\(462 cm^{2}\),1,1,High Confidence,"The final answer is fully correct: 462 cm² matches the required value and unit, and it’s clearly presented with no formatting issues.","Final answer step summary: The area of the unshaded region is 462 cm².
+Marker's rationale: The student's answer matches the solution because the numerical value (462) is identical to the required answer, includes the correct unit cm², and is clearly presented without any format errors.","[
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""The area of the unshaded region is 462 cm\u00b2."",
+    ""evidence_required"": ""462 cm\u00b2"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""cm\u00b2""
+  }
+]","The following rules from the Full Marking Guideline may be invoked when grading students’ answers to this “area of composite figure – no-calculator” question. Section / rule numbers are kept exactly as in the original document.
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs … will be penalized.  
+5. Redundancy – Leading zero, trailing zero, and zero place holders … will be penalized.  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.
+
+D) Units related marking  
+1. Angles without a degree sign will be marked down. (Relevant if any angle values are stated.)  
+6. The usage of S and c for dollars and cents is acceptable. (Not directly relevant here but governs unit presentation in general.)  
+8. Years are considered as units and will be treated accordingly. (General unit guidance.)
+
+E) Alternative format provided by students  
+2. Powers in units  
+   Original form: cm²  
+   - cm2 (Correct)  
+   - cm^2 (Correct)  
+   - cm square (Correct)  
+   - square cm (Correct)  
+   - ^cm2 (Wrong)
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working.
+
+H) Others  
+2. If the question is 'what is the number of triangles shaded', we will mark down if students give fractions instead. (By extension, if an exact area is required, giving an unrelated form would be penalised.)
+
+These copied rules cover fraction/precision requirements, correct unit notation for area (cm² variations), proper use of equal signs, avoidance of redundant zeros, geometric labelling, and the obligation to show working in this no-calculator context."
+a002,1,"In the figure below, not drawn to scale, G is the centre of the circle.
+AB, CD, DE, EF are straight lines. $\small \angle$CGE is twice the size of $\small \angle$AGC. $\small \angle$ABD $= $ 123$^\circ$.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/30839des1_qsn_img_0_1391523382.png)
+
+[Question]
+<html><head></head><body><p>Name the angle which has the same size as $\angle$CAG.</p></body></html>",Ans$:$ $\angle$GCA or $\angle$ACG,gca,0,0,High Confidence,"Although the named angle is mathematically correct, the response uses lowercase letters where capitals are required, so formatting criteria fail and the final answer is marked incorrect.","Final answer step summary: The angle equal to ∠CAG is named as ∠GCA or ∠ACG.
+Marker's rationale: The student's answer does not match the solution because, although it names the correct angle (Criteria 1) and no units are needed (Criteria 2), the letters are written in lowercase. Geometry labels given in the question are capital letters, so per the marking guideline the required format is not followed, failing Criteria 3.","[
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""The angle equal to \u2220CAG is named as \u2220GCA or \u2220ACG."",
+    ""evidence_required"": ""\u2220GCA or \u2220ACG"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  }
+]","C) Common presentation errors  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.  
+ E.g.  
+ - AB (correct)  
+ - ab (wrong)  
+ - ∠ABC (correct)  
+ - ∠abc (wrong)  
+ - angle ABC (correct)  
+ - angle abc (wrong)  
+  For one-letter angle form, small letters are acceptable.  
+  E.g.  
+  - ∠y (correct)  
+  - ∠Y (correct)"
+a003,1,Find the value of 2$\frac{3}{4}$ $\div$ 3.  Express your answer as a fraction in its simplest form.,"2$\frac{3}{4}$ $\div$ 3
+
+$=$ $\frac{11}{4}$ $\div$ 3
+
+$=$ $\frac{11}{4}$ $\times$ $\frac{1}{3}$
+
+$=$ $\frac{11}{12}$
+
+Ans: $\frac{11}{12}$",$\frac{11}{12}$,1,1,High Confidence,"The answer 11/12 exactly matches the required value, needs no units, and is in simplest fractional form, so it is fully correct.","Final answer step summary: The final answer is 11/12.
+Marker's rationale: The student's answer matches the solution because the final value is exactly 11/12, no units are needed, and it is given as a fraction in simplest form.","[
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""The final answer is 11/12."",
+    ""evidence_required"": ""11/12"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  }
+]","Relevant rules for grading this question:
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   - 4/10 = $300 (wrong)  
+   - 0.4 = $300 (wrong)  
+   - 3/4 = 4/5 (wrong)  
+   - 7/11 = 0.636 (wrong)  
+   - 7/11 ≈ 0.64 (correct)  
+
+9. The usage of : as a replacement of ÷ is acceptable  
+   E.g.  
+   - 10 : 2 = 5 (correct)  
+
+E) Alternative format provided by students  
+
+1. Fractions  
+   Original answer: 1 2/3  
+   - 1 2/3 (Correct)  
+   - 1 2 (Correct)  
+   - 1 and 2 out of 3 (Correct)  
+   - 1 and 2 over 3 (Correct)  
+   - 12/3 (Wrong)  
+   - 1/2/3 (Wrong)"
+a004,1,"[Previous Question Part]
+Question Part 1:
+In 816, the digit in the hundreds place is __________.
+Question Part 2:
+In 987, the digit in the tens place is ________.
+Question Part 3:
+In 463, the value of the digit 4 is ________.
+Question Part 4:
+In 388, the value of the digit 3 is _________.
+Question Part 5:
+In 897, the digit 9 is in the ____________ place.
+
+[Question]
+In 108, the digit 1 is in the ____________ place.",hundreds,hundred,0,0,Low Confidence,"The response says “hundred” instead of the required “hundreds,” which is not equivalent; despite clear presentation and no unit requirement, the answer fails on correctness.","Final answer step summary: The digit 1 is in the hundreds place.
+Marker's rationale: The student's answer does not match the solution because the required phrase for the place value is “hundreds”. Writing “hundred” omits the necessary plural form and is considered a different term, so the answer is not equivalent (Criteria 1 = 0). No units are required (Criteria 2 = 1) and the response is clearly written (Criteria 3 = 1). Since not all criteria are met, the overall mark is 0.","[
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""The digit 1 is in the hundreds place."",
+    ""evidence_required"": ""hundreds"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  }
+]","Relevant rules for grading this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+6. Grammar – No marks will be deducted for grammar errors unless it is numbers-to-word questions."
+a005,2,"Ellyn used half of the water in Container A to fill up 3 jars
+completely. The capacity of each jar is 475 m$\small\ell$. Find the
+capacity of Container A. Give your answer in litres and
+millilitres.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/Default Folder/53386a_qsn_img_0_1518928900.png)","Volume of 3 such jars $=$ 475 m$\small\ell$ $\times$ 3 $=$ 1425
+m$\small\ell$
+
+Capacity of container A $=$ 1425 m$\small\ell$ $\times$ 2 $=$ 2850
+m$\ell$ $=$ 2 $\small\ell$ 850 m$\small\ell$
+
+Ans: 2 $\ell$ 850 m$\ell$","475mL x 3 = 1425mL
+
+1425mL = 1 L  425mL",1,1,High Confidence,"The student correctly completed S1 by computing the total water in three jars as 1425 mL, which matches the required evidence. However, the final answer was wrong: they stated Container A’s capacity as 1 L 425 mL instead of the required 2 L 850 mL. Despite this error in value (failing answer equivalence), the response used acceptable units (L/mL) and a clear format, so unit and presentation criteria were met. This aligns with the rubric and unit rules, yielding credit for S1 only and none for the incorrect final capacity.","S1 step summary: Find total volume of water in 3 jars.
+Marker's rationale: The student's answer fully matches the solution because 1425 mL appears explicitly, satisfying the required evidence for this step.
+
+Final answer step summary: State capacity of Container A in litres and millilitres.
+Marker's rationale: The student's answer does not match the solution because the stated capacity (1 L 425 mL) is not mathematically equivalent to the required 2 L 850 mL, although correct units and acceptable format were used.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Find total volume of water in 3 jars"",
+    ""evidence_required"": ""1425 mL"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""State capacity of Container A in litres and millilitres"",
+    ""evidence_required"": ""2 L 850 mL"",
+    ""mark_value"": ""2"",
+    ""units_required"": ""L and mL""
+  }
+]","Relevant rules to grade this question  
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 8L 020 mL (wrong)  
+   - 8L 20 mL (correct)  
+   - 8020 mL (correct)  
+   (…examples continue as in guideline…)  
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. (Although for this question we expect “L”, “l”, “mL” or “ml”, this rule reminds markers that accepted unit abbreviations are permissible.)"
+a006,2,"A group of 36 girls shared some beads.  After they had taken 79 beads each, there were 16 beads left.  How many beads were there at first?","
+36 girls $=$ 36 $\times$ 79 $=$ 2844 beads
+
+At first $=$ 2844 $+$ 16 $=$ 2860
+
+Ans: 2860 beads",2860,2,2,High Confidence,"The final value 2860 is correct and clearly stated, but the necessary working for 2844 beads taken by the girls is absent, so only the final-answer marks are awarded.","S1 step summary: Find total beads taken by the 36 girls
+Marker's rationale: The student's answer does not match the solution because the working showing 2844 beads (total taken) is absent.
+
+Final answer step summary: Compute initial number of beads before sharing
+Marker's rationale: The student's answer fully matches the solution because the final value 2860 is correct, no specific unit is required, and the answer is clearly stated without formatting issues.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Find total beads taken by the 36 girls"",
+    ""evidence_required"": ""2844 beads"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Compute initial number of beads before sharing"",
+    ""evidence_required"": ""2860 beads"",
+    ""mark_value"": ""2"",
+    ""units_required"": ""none""
+  }
+]","Below are the ONLY rules that could potentially be required when grading pupils’ responses to this particular question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   … (examples show that using “=” in a chain that is not true is penalised).  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 173.9 (correct)  
+   - 173.90 (wrong) unless question specified 2 decimal places  
+   (Commas in 4-digit numbers such as 2,860 are acceptable; unnecessary zeros are penalised.)
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working."
+a007,2,"<html><head></head><body><p>This is a net of a solid.</p></body></html>
+
+![Image](https://attachment.srv.geniebook.com/api/v2/public/files/Q4mO2bu2deTrbDH8.svg)
+
+[Previous Question Part]
+Question Part 1:
+<html><head></head><body><p>Name the solid that can be formed from the net.</p></body></html>
+
+[Question]
+<html><head></head><body><p>Which of the following solids can be formed from the net above?</p></body></html>
+
+![Image](https://attachment.srv.geniebook.com/api/v2/public/files/xOGCQYZreqcoKIeS.svg)",Ans$:$ Solid D,Solid C and D,0,0,High Confidence,"The student selected both Solid C and Solid D; since the correct unique choice is Solid D, answer equivalence fails despite acceptable format and no unit requirement.","Final answer step summary: Identify the solid that matches the given net
+Marker's rationale: The student's answer does not match the solution because although the format is acceptable and no units are required, the answer includes both Solid C and Solid D, which is not equivalent to the correct single answer Solid D.","[
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Identify the solid that matches the given net"",
+    ""evidence_required"": ""Solid D"",
+    ""mark_value"": ""2"",
+    ""units_required"": ""none""
+  }
+]","Relevant rules to grade this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+6. Grammar – No marks will be deducted for grammar errors unless it is numbers-to-word questions  
+12. Labelling for geometry questions needs to strictly follow the question. When the given letters are in capital form, the answers given by students have to also be in capital letter.  
+    E.g.  
+    - AB (correct)  
+    - ab (wrong)  
+    - ∠ABC (correct)  
+    - ∠abc (wrong)  
+    - angle ABC (correct)  
+    - angle abc (wrong)  
+      
+    For one-letter angle form, small letters are acceptable.  
+    E.g.  
+    - ∠y (correct)  
+    - ∠Y (correct)  
+
+D) Units related marking  
+7. Students mentioning the shape instead of drawing is acceptable unless the question is about drawing.  
+    E.g.  
+    - Square (correct)  
+    - ⬛️ (correct)"
+a008,2,"The diagram below shows the amount of money 4 children have.
+
+![Image](https://storage.googleapis.com/geniebook/images/question/2/216331_qsn_img_00.svg)
+
+Which two children have enough money to each buy a candy that costs
+30¢?","Amount of money Chloe has  $=$ 50¢ $+$ 20¢ $+$ 10¢
+ $=$ 80¢  
+Amount of money Alex has  $=$ 10¢ $+$ 10¢ $+$ 5¢ 
+ $=$ 25¢  
+Amount of money Asher has $=$ 10¢ $+$ 5¢ $+$ 5¢ 
+ $=$ 20¢  
+Amount of money Adriel has  $=$ 20¢ $+$ 5¢ $+$ 5¢ 
+ $=$ 30¢  
+In order to be able to buy the candy, each child must have at least 30¢. Chloe and Adriel have at least 30¢. 
+Ans$:$ Chloe and Adriel",adriel,1,0,High Confidence,"The individual totals for each child are not shown, and the final answer lists only Adriel rather than “Chloe and Adriel,” making the response incomplete though formatting is fine.","S1 step summary: Find the total amount of money each child has
+Marker's rationale: The student's answer does not match the solution because no working showing the individual amounts (Chloe 80¢, Alex 25¢, Asher 20¢, Adriel 30¢) is provided.
+
+Final answer step summary: State the two children who can each afford a 30¢ candy
+Marker's rationale: The student's answer does not match the solution because it names only “Adriel” instead of both “Chloe and Adriel”. Units are not required and format is acceptable, but the essential answer is incomplete.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Find the total amount of money each child has"",
+    ""evidence_required"": ""Chloe 80\u00a2, Alex 25\u00a2, Asher 20\u00a2, Adriel 30\u00a2"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""State the two children who can each afford a 30\u00a2 candy"",
+    ""evidence_required"": ""Chloe and Adriel"",
+    ""mark_value"": ""2"",
+    ""units_required"": ""none""
+  }
+]","The following rules from the Full Marking Guideline are needed to grade this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   … (trailing zeros on number pattern can be accepted)  
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   E.g.  
+   - 50c (correct)  
+   - S100 (correct)  
+
+E) Alternative format provided by students  
+6. Money  
+   Writing dollars and cents in words is acceptable; Interchanging of comma (,) and period (.) is not acceptable; Using unnecessary brackets is not acceptable  
+   - $20 and 50¢ (Correct)  
+   - 20 dollars and 50 cents (Correct)  
+   - $2500 (Correct)  
+   - $2 500 (Correct)  
+   - $1,250.50 (Correct)  
+   - $(10t) (Wrong)  
+   - $1250,50 (Wrong)"
+a009,3,"In a school trip to Penang, $\frac{1}{5}$ of the people who went
+were teachers and the rest were students. $\frac{2}{3}$ of the
+students were boys and the rest were girls. What fraction of the
+people who attended the school trip were girls?","Number of the students $=$ 1 $-$ $\frac{1}{5}$ $=$
+$\frac{4}{5}$
+
+1 $-$ $\frac{2}{3}$ $=$ $\frac{1}{3}$ of the students are girls
+
+Number of girls in fraction $=$ $\frac{1}{3}$ $\times$
+$\frac{4}{5}$ $=$ $\frac{4}{15}$
+
+Ans$:$ $\frac{4}{15}$","fraction of the people who attend the school trip were student
+=1 -$\frac{1}{5}$
+=$\frac{4}{5}$of the people who attend the school trip
+fraction of the student who attended the school trip were girls
+=1-$\frac{2}{3}$
+=$\frac{1}{3}$ of the student who attended the school trip
+fraction of the people who attended the school trip were girls
+=$\frac{4}{5}$-$\frac{1}{3}$
+=$\frac{12}{15}$-$\frac{5}{15}$
+=$\frac{7}{15}$of the people who attended the school trip",2,2,High Confidence,"The steps correctly show 4/5 as students and 1/3 of students as girls, but the final combined fraction is incorrectly given as 7/15 instead of 4/15.","S1 step summary: Find fraction of all people who were students
+Marker's rationale: The student's answer fully matches the solution because 4/5 is explicitly shown as the fraction of people who were students.
+
+S2 step summary: Find fraction of students who were girls
+Marker's rationale: The student's answer fully matches the solution because 1/3 is explicitly shown as the fraction of students who were girls.
+
+Final answer step summary: Compute overall fraction of all people who were girls
+Marker's rationale: The student's answer does not match the solution because the stated final fraction is 7/15, which is not equivalent to the required 4/15, even though units and format are acceptable.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Find fraction of all people who were students"",
+    ""evidence_required"": ""4/5"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Find fraction of students who were girls"",
+    ""evidence_required"": ""1/3"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Compute overall fraction of all people who were girls"",
+    ""evidence_required"": ""4/15"",
+    ""mark_value"": ""3"",
+    ""units_required"": ""none""
+  }
+]","Relevant rules to grade this question:
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   - 4/10 = $300 (wrong)  
+   - 0.4 = $300 (wrong)  
+   - 3/4 = 4/5 (wrong)  
+   - 7/11 = 0.636 (wrong)  
+   - 7/11 ≈ 0.64 (correct)  
+
+E) Alternative format provided by students  
+
+1. Fractions  
+Original answer: 1 2/3  
+- 1 2/3 (Correct)  
+- 1 2 (Correct)  
+- 1 and 2 out of 3 (Correct)  
+- 1 and 2 over 3 (Correct)  
+- 12/3 (Wrong)  
+- 1/2/3 (Wrong)"
+a010,3,"An eraser cost \$$x$. A pen costs \$0.30 more than an eraser. A
+ruler costs $0.10 less than a pen.<br>
+How much would Ali need to buy 2 pens and 1 ruler?","Cost of each pen $=$ \$($x$ $+$ 0.30)
+
+Cost of a ruler $=$ \$($x$ $+$ 0.30 $-$ 0.10) $=$ \$($x$ $+$
+0.20)
+
+Cost of 2 pens and 1 ruler $=$ \$($x$ $+$ 0.30) $+$ \$($x$ $+$
+0.30) $+$ \$($x$ $+$ 0.20) $=$ \$(3$x$ $+$ 0.80)
+
+Ans: \$(3$x$ $+$ 0.80)",$(x+0.80),0,0,High Confidence,"No expressions for a pen (x + 0.30) or ruler (x + 0.20) are provided, and the total is wrongly stated as (x + 0.80) without the required dollar unit and form; the correct total is (3x + 0.80).","S1 step summary: State the cost of one pen in terms of x
+Marker's rationale: The student's answer does not match the solution because no expression for the cost of one pen, (x + 0.30), is present.
+
+S2 step summary: State the cost of one ruler in terms of x
+Marker's rationale: The student's answer does not match the solution because no expression for the cost of one ruler, (x + 0.20), is present.
+
+Final answer step summary: Total cost for 2 pens and 1 ruler
+Marker's rationale: The student's answer does not match the solution because it is (x + 0.80), which is not equivalent to (3x + 0.80) and lacks the required dollar unit and correct algebraic form.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""State the cost of one pen in terms of x"",
+    ""evidence_required"": ""$(x + 0.30)"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""State the cost of one ruler in terms of x"",
+    ""evidence_required"": ""$(x + 0.20)"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Total cost for 2 pens and 1 ruler"",
+    ""evidence_required"": ""$(3x + 0.80)"",
+    ""mark_value"": ""3"",
+    ""units_required"": ""$""
+  }
+]","Relevant rules for grading this question (retain section / rule numbers):
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs – avoid linking unequal quantities with “=”.  
+3. Algebraic terms with coefficient 1 written will be marked down.  
+   E.g. 1𝑎 + 3 (wrong) → 𝑎 + 3 (correct)  
+4. Separate algebra terms with units that are given without brackets will be marked down.  
+   E.g. 2𝑎 + 3 cm (wrong) → (2𝑎 + 3) cm (correct)  
+5. Redundancy – Leading zero, trailing zero, and zero placeholders.  
+   • 2.34 litres (correct) vs 2.340 litres (wrong) unless specified.  
+   • 173.9 (correct) vs 173.90 (wrong) unless question specified 2 d.p.  
+   Trailing zeros on number pattern can be accepted – 0.900 (correct).
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   E.g. 50c (correct) ; S100 (correct)
+
+E) Alternative format provided by students  
+6. Money  
+   • Writing dollars and cents in words is acceptable; interchanging of comma (,) and period (.) is not acceptable; using unnecessary brackets is not acceptable.  
+     – $20 and 50¢ (Correct)  
+     – 20 dollars and 50 cents (Correct)  
+     – $2500 / $2 500 (Correct)  
+     – $(10t) (Wrong)  
+     – $1250,50 (Wrong)
+
+(≈180 words)"
+a011,3,"A rectangular tank measuring 40 cm by 30 cm by 36 cm is $\frac{5}{6}$ filled with water. A cubical tank with sides 40 cm is $\frac{5}{8}$ filled with water. The water from the rectangular tank is then poured into the cubical tank until it is completely filled to the brim.
+
+[Question]
+How much water is left in the rectangular tank? Express your answer
+in litres.","Volume of water in rectangular tank
+$=$ $\frac{5}{6}\times$ 40 cm $\times$ 30 cm $\times$ 36 cm
+$=$ 36000 cm$^3$
+
+Volume needed to fill cubical tank completely
+$=$ $\frac{3}{8}\times$ 40 cm $\times$ 40 cm $\times$ 40 cm
+$=$ 24000 cm$^3$
+
+Amount of water left in rectangular tank
+$=$ 36000 cm$^3$ $-$ 24000 cm$^3$
+$=$ 12000 cm$^3$
+$=$ 12 $\small\ell$
+
+Ans: 12 $\small\ell$","volume of rectangular tank =$\frac{5}{6}$x 40x30x36= 36000
+volume of cubical tank=$\frac{5}{8}$x 40 x40= 1000
+after rectangular poured into cubical tank 
+= 36000+ 1000
+= 37000 
+
+
+litres=$\frac{37000}{1000}$= 37L",1,1,High Confidence,"The water volume in the rectangular tank (36,000 cm³) is correctly computed, but the extra 24,000 cm³ to fill the cube is not, leading to a wrong final amount of 37 L instead of 12 L.","S1 step summary: Compute volume of water currently in the rectangular tank
+Marker's rationale: The student's answer fully matches the solution because the working shows 36000 cm³ for water in the rectangular tank, which is the required evidence for this step.
+
+S2 step summary: Compute extra volume needed to top up cubical tank to the brim
+Marker's rationale: The student's answer does not match the solution because no correct value of 24000 cm³ (extra volume needed) appears; instead an incorrect calculation is shown.
+
+Final answer step summary: Compute remaining water in rectangular tank and express in litres
+Marker's rationale: The student's answer does not match the solution because the stated amount of water left is 37 L instead of the correct 12 L, so answer equivalence fails even though a unit is given and the format is clear.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Compute volume of water currently in the rectangular tank"",
+    ""evidence_required"": ""36000 cm\u00b3"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Compute extra volume needed to top up cubical tank to the brim"",
+    ""evidence_required"": ""24000 cm\u00b3"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Compute remaining water in rectangular tank and express in litres"",
+    ""evidence_required"": ""12"",
+    ""mark_value"": ""3"",
+    ""units_required"": ""litres""
+  }
+]","B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   • 2.34 litres (correct)  
+   • 2.340 litres (wrong) unless question specified 3 decimal places  
+
+D) Units related marking  
+8. Years are considered as units and will be treated accordingly.  
+   (The same convention on supplying the required unit applies to other physical quantities such as litres; omit the unit and the answer will be marked down.)"
+a012,3,"To reach from home to the city, Terence drove $\frac{3}{8}$ of the
+journey at an average speed of 72 km/h and then he completed the
+remaining 720 km to reach the city. If his average speed for the
+whole journey from his home to the city was 76.8 km/h, find his
+average speed for the second part of his journey.","$\frac{5}{8}$ of journey $\to$ 720 km
+
+$\frac{1}{8}$ of journey $\to$ 720 km $\div$ 5 $=$ 144 km
+
+Total distance of whole journey $=$ 144 km $\times$ 8 $=$ 1152
+km
+
+Time taken for whole journey
+$=$ Total distance $\div$ average speed of whole journey
+$=$ 1152 km $\div$ 76.8 km/h
+$=$ 15 h
+
+Time taken for the first part of journey
+$=$ ($\frac{3}{8}$ $\times$ 1152 km) $\div$ 72 km/h
+$=$ 6 h
+
+Time taken for second part of journey
+$=$ 15 h $-$ 6 h
+$=$ 9 h
+
+Average speed for second part of journey
+$=$ 720 km $\div$ 9 h
+$=$ 80 km/h
+
+Ans: 80 km/h","Distance of the first part of the journey
+= 720 km : 5 x 3
+= 432 km
+Distance of the whole journey
+= 432 km + 720 km
+= 1152 km
+Time to travel the whole journey
+= 1152 km : 76.8 km/h
+= 15 h
+Time to travel the second part of the journey
+= 15 h : 5
+= 3 h
+Speed for the second part
+= 720 km : 3 h
+= 240 km/h
+Ans: 240 km/h",1,2,Incorrect - Low Confidence,"Total distance (1152 km) and time (15 h) are correct, yet the final average speed is miscalculated as 240 km/h rather than the required 80 km/h; units and format are fine.","S1 step summary: Determine the total distance of the whole journey
+Marker's rationale: The student's answer fully matches the solution because the total distance 1152 km is clearly shown.
+
+S2 step summary: Determine the total time for the whole journey
+Marker's rationale: The student's answer fully matches the solution because the total journey time 15 h is correctly calculated.
+
+Final answer step summary: Compute the average speed for the second part of the journey
+Marker's rationale: The student's answer does not match the solution because the numerical value 240 km/h is incorrect although the unit and format are acceptable.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Determine the total distance of the whole journey"",
+    ""evidence_required"": ""1152 km"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Determine the total time for the whole journey"",
+    ""evidence_required"": ""15 h"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Compute the average speed for the second part of the journey"",
+    ""evidence_required"": ""80 km/h"",
+    ""mark_value"": ""3"",
+    ""units_required"": ""km/h""
+  }
+]","The following rules from the Full Marking Guideline are relevant for grading students’ answers to the given average-speed problem.  Section / rule numbers are retained exactly.
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   – e.g. 3/4 = 4/5 (wrong)  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   – e.g. 173.9 (correct) ; 173.90 (wrong) unless question specified 2 decimal places  
+   – Trailing zeros on number pattern can be accepted – 0.900 (correct)
+
+D) Units related marking  
+(No specific speed rule is listed, but general unit expectations apply; absence of required units is marked down in analogous categories such as angles and percentages.)
+
+G) No calculator questions  
+When the question states “Show your working clearly”, students’ final answer step must include working.
+
+(Having copied all potentially applicable rules, any rule numbers not shown above are judged irrelevant to this particular speed/average‐rate question.)"
+a013,4,"Eileen baked some chocolate cupcakes. She sold half of the
+chocolate cupcakes to her neighbours and baked another 175
+strawberry cupcakes. She now has 512 cupcakes. How many more
+chocolate cupcakes did she bake than strawberry cupcakes?<BR><BR><BR>
+She baked __________ more chocolate cupcakes than strawberry cupcakes.","No. of chocolate cupcakes she had left $=$ 512 $-$ 175 $=$ 337
+
+Total no. of chocolate cupcakes she baked $=$ 337 $+$ 337 $=$
+674
+
+No. of chocolate cupcakes she baked more than strawberry cupcakes
+$=$ 674 $-$ 175 $=$ 499
+
+Ans: 499","Number of chocolate cupcakes she baked
+=512-175
+=337
+Number of chocolate cupcakes she baked than strawberry cupcake
+= 337-175
+=162
+Ans: 162",1,1,High Confidence,"The remaining cupcakes after selling half (337) are correctly shown, but the original total (674) and required difference (499) are missing, and the final answer 162 is incorrect.","S1 step summary: Find number of chocolate cupcakes remaining after selling half
+Marker's rationale: The student's answer fully matches the solution because the value 337 appears, showing the correct computation for cupcakes remaining after the sale.
+
+S2 step summary: Find total number of chocolate cupcakes originally baked
+Marker's rationale: The student's answer does not match the solution because the required intermediate value 674 is missing.
+
+S3 step summary: Find how many more chocolate than strawberry cupcakes were baked
+Marker's rationale: The student's answer does not match the solution because the required value 499 is absent.
+
+Final answer step summary: State the required difference in cupcakes baked
+Marker's rationale: The student's answer does not match the solution because the stated answer 162 is not mathematically equivalent to the required answer 499, although no specific unit or format issue is present.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Find number of chocolate cupcakes remaining after selling half"",
+    ""evidence_required"": ""337"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Find total number of chocolate cupcakes originally baked"",
+    ""evidence_required"": ""674"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S3"",
+    ""step_summary"": ""Find how many more chocolate than strawberry cupcakes were baked"",
+    ""evidence_required"": ""499"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""State the required difference in cupcakes baked"",
+    ""evidence_required"": ""499"",
+    ""mark_value"": ""4"",
+    ""units_required"": ""none""
+  }
+]","Relevant rules to grade this question (section / rule numbers unchanged):
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+6. Grammar – No marks will be deducted for grammar errors unless it is numbers-to-word questions  
+
+D) Units related marking  
+(There is no compulsory unit for “cupcakes”, so none of the specific unit rules apply, but these unit rules must still be observed if a student chooses to include any units.)  
+1. Angles without a degree sign will be marked down.  
+2. Answers that are supposed to be percentage values will need '%' as units.  
+6. The usage of S and c for dollars and cents is acceptable.  
+8. Years are considered as units and will be treated accordingly.
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working."
+a014,4,"Harold had 520 beads. 35% of his beads were black and the rest were
+red. After using 95 beads to make a necklace, 40% of the remaining
+beads were black. How many red beads did he use?","Percentage of the beads that were red (at first) $=$ 100% $-$ 35%
+$=$ 65%
+
+Number of red beads (at first) $=$ $\frac{65}{100}$ $\times$ 520
+$=$ 338
+
+Percentage of the remaining beads that were red $=$ 100% $-$ 40%
+$=$ 60%
+
+Number of beads remaining $=$ 520 $-$ 95 $=$ 425
+
+Number of red beads remaining $=$ $\frac{60}{100}$ $\times$ 425 $=$
+255
+
+Number of red beads used $=$ 338 $-$ 255 $=$ 83
+
+Ans: 83 beads","Percentage representing the red beads
+ = 100% - 35% 
+= 65%
+Number of red beads 
+= 520 * 65% 
+= 338 beads
+Number of beads remaining 
+= 520 - 95 
+= 425 beads
+After make a necklace, percentage representing the red beads
+=100% - 40%
+After make a necklace, number of red beads 
+=425 * 60% 
+=255 beads
+Number of red beads that he used
+=338 - 225
+=113 beads",3,3,High Confidence,"Initial red beads (338), remaining beads (425), and remaining red beads (255) are all correct; however, the final number of red beads used is wrongly stated as 113 instead of 83.","S1 step summary: Compute initial number of red beads
+Marker's rationale: The student's answer fully matches the solution because the value 338 for the initial red beads is present.
+
+S2 step summary: Compute number of beads remaining after using 95 beads
+Marker's rationale: The student's answer fully matches the solution because the value 425 for the beads remaining is present.
+
+S3 step summary: Compute number of red beads remaining
+Marker's rationale: The student's answer fully matches the solution because the value 255 for the remaining red beads is present.
+
+Final answer step summary: Compute number of red beads Harold used
+Marker's rationale: The student's answer does not match the solution because the stated number of red beads used is 113, while the correct answer is 83. Units are acceptable and presentation is clear, but numerical value is wrong, so no marks for this step.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Compute initial number of red beads"",
+    ""evidence_required"": ""338"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Compute number of beads remaining after using 95 beads"",
+    ""evidence_required"": ""425"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S3"",
+    ""step_summary"": ""Compute number of red beads remaining"",
+    ""evidence_required"": ""255"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Compute number of red beads Harold used"",
+    ""evidence_required"": ""83"",
+    ""mark_value"": ""4"",
+    ""units_required"": ""none""
+  }
+]","Relevant rules to grade this question (original numbering preserved):
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+2. All improper fractions must be converted to mixed numbers unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.  
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   - 4/10 = $300 (wrong)  
+   - 0.4 = $300 (wrong)  
+   - 3/4 = 4/5 (wrong)  
+   - 7/11 = 0.636 (wrong)  
+   - 7/11 ≈ 0.64 (correct)  
+
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   E.g.  
+   - 2.34 litres (correct)  
+   - 2.340 litres (wrong) unless question specified 3 decimal places  
+   Trailing zeros on number pattern can be accepted  
+   - 0.900 (correct)  
+
+D) Units related marking  
+2. Answers that are supposed to be percentage values will need '%' as units. Without '%', answers will be marked down.  
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working."
+a015,4,"Andy earned \$4200 a month, while Brad earned \$450 less than Andy
+each month. Andy and Brad spent \$1900 and \$1550 a month
+respectively, and saved the rest. What was the difference between
+the monthly savings that Andy and Brad had?","Brad's monthly salary $=$ \$4200 $-$ \$450 $=$ \$3750
+
+Andy's monthly savings $=$ \$4200 $-$ \$1900 $=$ \$2300
+
+Brad's monthly savings $=$ \$3750 $-$ \$1550 $=$ \$2200
+
+Difference in their monthly savings $=$ \$2300 $-$ \$2200 $=$
+\$100
+
+Ans: \$100","Andy earns $4200
+Andy saves $4200-$1900= $2300
+Brad earns $4200-450= $3550
+Brad saves $3550-$1550=2000
+Difference: $2300 - $2000=300",1,1,High Confidence,"Brad’s salary is miswritten (3550 vs 3750), Andy’s savings (2300) are correct, Brad’s savings are wrong (2000 vs 2200), and the final difference is incorrect (300 vs $100) with the dollar sign missing.","S1 step summary: Calculate Brad’s monthly salary
+Marker's rationale: The student's answer does not match the solution because Brad's salary was written as 3550 instead of the required 3750.
+
+S2 step summary: Calculate Andy’s monthly savings
+Marker's rationale: The student's answer fully matches the solution because Andy's savings of 2300 is correctly shown.
+
+S3 step summary: Calculate Brad’s monthly savings
+Marker's rationale: The student's answer does not match the solution because Brad's savings are stated as 2000 instead of the required 2200.
+
+Final answer step summary: Find the difference between Andy’s and Brad’s monthly savings
+Marker's rationale: The student's answer does not match the solution because the stated difference is 300, not the required 100. Therefore Answer Equivalence fails. The unit “$” is missing beside the final figure, so Unit Accuracy fails. Format is acceptable, so Criterion 3 passes.","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Calculate Brad\u2019s monthly salary"",
+    ""evidence_required"": ""$3750"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Calculate Andy\u2019s monthly savings"",
+    ""evidence_required"": ""$2300"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S3"",
+    ""step_summary"": ""Calculate Brad\u2019s monthly savings"",
+    ""evidence_required"": ""$2200"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Find the difference between Andy\u2019s and Brad\u2019s monthly savings"",
+    ""evidence_required"": ""$100"",
+    ""mark_value"": ""4"",
+    ""units_required"": ""$""
+  }
+]","Extracted rules needed to grade this question:
+
+B) General marking standards  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+1. Inappropriate use of equal signs  
+   E.g.  
+   - 40% = $300 (wrong)  
+   - 4/10 = $300 (wrong)  
+   - 0.4 = $300 (wrong)  
+   - 3/4 = 4/5 (wrong)  
+   - 7/11 = 0.636 (wrong)  
+   - 7/11 ≈ 0.64 (correct)
+
+D) Units related marking  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   E.g.  
+   - 50c (correct)  
+   - S100 (correct)
+
+E) Alternative format provided by students  
+6. Money  
+   Writing dollars and cents in words is acceptable; Interchanging of comma (,) and period (.) is not acceptable; Using unnecessary brackets is not acceptable  
+   - $20 and 50¢ (Correct)  
+   - 20 dollars and 50 cents (Correct)  
+   - $2500 (Correct)  
+   - $2 500 (Correct)  
+   - $1,250.50 (Correct)  
+   - $(10t) (Wrong)  
+   - $1250,50 (Wrong)"
+a016,4,"Each donut costs $2.35 at the bakery. The customer will receive 1
+free donut for every 8 donuts he buys. How much must Ethan need to
+pay if he wants to buy 216 donuts?","
+Since the customer will receive 1 free donut when he buys 8 of
+them,
+Cost of 9 donuts $=$ \$2.35 $\times$ 8 $=$ \$18.80
+
+Number of groups of 9 $=$ 216 $\div$ 9 $=$ 24
+
+Cost of 216 donuts $=$ \$18.80 $\times$ 24 $=$ \$451.20
+
+
+Ans: \$451.20","The total amount of 216 donuts are: 216*2.35=507.6<span contenteditable=""false"">$</span>
+The are 24 times they can buy 9 donuts(8 pays 1 free), so there will be 24 donuts free
+The donuts he will pays: 216-24=192 donuts
+                                                 : 192*2.35<span contenteditable=""false"">$</span>=451.2<span contenteditable=""false"">$</span>",3,4,Low Confidence,"The cost of 9 donuts (18.80) is not shown, but 24 groups of 9 are correctly identified; the final total $451.2 is equivalent to $451.20, includes the dollar unit, and is acceptably formatted.","S1 step summary: Find the cost of 9 donuts (8 bought + 1 free)
+Marker's rationale: The student's answer does not match the solution because the required intermediate value 18.80 (cost of 9 donuts) is not shown anywhere in the working.
+
+S2 step summary: Find number of groups of 9 in 216 donuts
+Marker's rationale: The student's answer fully matches the solution because the working explicitly states that there are 24 groups of 9 donuts.
+
+Final answer step summary: Total amount Ethan must pay for 216 donuts
+Marker's rationale: The student's answer fully matches the solution because the numerical value 451.2 equals 451.20, the dollar sign “$” is present (unit given), and the format 451.2$ is acceptable under the guidelines (no unnecessary trailing zero).","[
+  {
+    ""step_code"": ""S1"",
+    ""step_summary"": ""Find the cost of 9 donuts (8 bought + 1 free)"",
+    ""evidence_required"": ""18.80"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""S2"",
+    ""step_summary"": ""Find number of groups of 9 in 216 donuts"",
+    ""evidence_required"": ""24"",
+    ""mark_value"": ""1"",
+    ""units_required"": ""none""
+  },
+  {
+    ""step_code"": ""Final answer"",
+    ""step_summary"": ""Total amount Ethan must pay for 216 donuts"",
+    ""evidence_required"": ""451.20"",
+    ""mark_value"": ""4"",
+    ""units_required"": ""$""
+  }
+]","Relevant rules for grading “Each donut costs $2.35 … How much must Ethan need to pay if he wants to buy 216 donuts?”  
+
+B) General marking standards  
+1. All fractions and ratios must be left in the simplest form unless otherwise stated.  
+3. All answers must be precise and exact unless otherwise stated.
+
+C) Common presentation errors  
+5. Redundancy – Leading zero, trailing zero, and zero place holders  
+   • 2.34 (correct) vs 2.340 (wrong) unless question specified 3 d.p.  
+   • 173.9 (correct) vs 173.90 (wrong) unless question specified 2 d.p.  
+
+D) Units related marking  
+2. Answers that are supposed to be percentage values will need '%' as units. Without '%', answers will be marked down. *(Not directly money but confirms unit sensitivity)*  
+6. The usage of S and c for dollars and cents is acceptable. Not all students understand how to type $ and ¢.  
+   • 50c (correct)  
+   • S100 (correct)
+
+E) Alternative format provided by students  
+6. Money  
+   • Writing dollars and cents in words is acceptable; interchanging of comma (,) and period (.) is not acceptable; using unnecessary brackets is not acceptable  
+   • $20 and 50¢ (Correct)  
+   • 20 dollars and 50 cents (Correct)  
+   • $2500 (Correct)  
+   • $2 500 (Correct)  
+   • $1,250.50 (Correct)  
+   • $1250,50 (Wrong)
+
+G) No calculator questions  
+When the question states 'Show your working clearly', students' final answer step must include working. *(Apply if this paper is a no-calculator, show-working section.)*"
