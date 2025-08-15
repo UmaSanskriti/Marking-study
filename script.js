@@ -12,10 +12,23 @@ function checkReady() {
 
 checkReady();
 
-async function loadQuestions() {
+  async function loadQuestions() {
   try {
-    const base = window.location.origin === 'null' ? 'http://localhost:3000' : '';
-    const res = await fetch(base + '/questions');
+    let res;
+    try {
+      res = await fetch('questions.json');
+      if (!res.ok) throw new Error('Status ' + res.status);
+    } catch (err) {
+      console.warn('Local questions.json fetch failed:', err);
+      const origin = window.location.origin;
+      if (origin === 'null' || origin.includes('localhost')) {
+        const base = origin === 'null' ? 'http://localhost:3000' : origin;
+        res = await fetch(base + '/questions');
+        if (!res.ok) throw new Error('Status ' + res.status);
+      } else {
+        throw err;
+      }
+    }
     questionDB = await res.json();
     questions = questionDB.part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
     dataLoaded = true;
