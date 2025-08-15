@@ -66,7 +66,7 @@ async function loadQuestions() {
       studentAnswer: r['student_answer'],
       correctMark: Number(r['Correct marks']),
       aiMark: Number(r['AI Marks']),
-      aiConfidence: r['AI mark label'],
+      aiConfidence: r['AI mark label'] || r['AI Confidence'],
       stagedExplanation: r["AI Marker's Staged Explanation"],
       summaryExplanation: r["AI Marker's Summarised Explanation"],
       rubricJson: r['rubric_json'],
