@@ -191,7 +191,8 @@ function renderQuestion() {
     return;
   }
   const q = questions[current];
-  if (q.part !== "1" && timeLeft === 0) startTimer(30 * 60);
+  // Start separate 15-minute timers for Parts 2a and 2b
+  if (q.part !== "1" && timeLeft === 0) startTimer(15 * 60);
 
   questionStartTime = Date.now();
   currentRecord = {
@@ -228,6 +229,19 @@ function renderQuestion() {
     currentRecord.actions.push({ action: "ai_mark", time: Date.now() - questionStartTime });
     handleAIMark(q);
   };
+}
+
+function goToNextQuestion(prevQ) {
+  current++;
+  const nextQ = questions[current];
+  if (prevQ.part === "2a" && nextQ && nextQ.part === "2b") {
+    if (timerInterval) clearInterval(timerInterval);
+    timeLeft = 0;
+    timerDiv.classList.add("hidden");
+    showPart2bPrompt();
+  } else {
+    renderQuestion();
+  }
 }
 
 function handleSelfMark(q) {
@@ -298,8 +312,7 @@ function handleSelfMark(q) {
         currentRecord.viewedExplanation = viewedStaged || viewedSummary;
         currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
         results.push(currentRecord);
-        current++;
-        renderQuestion();
+        goToNextQuestion(q);
       };
     } else {
       const ai = getAi(q);
@@ -307,8 +320,7 @@ function handleSelfMark(q) {
       currentRecord.aiConfidence = ai.confidence;
       currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
       results.push(currentRecord);
-      current++;
-      renderQuestion();
+      goToNextQuestion(q);
     }
   };
 }
@@ -371,8 +383,7 @@ function handleAIMark(q) {
       currentRecord.delegated = finalMark === ai.aiMark;
       currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
       results.push(currentRecord);
-      current++;
-      renderQuestion();
+      goToNextQuestion(q);
     };
   } else {
     let viewedExplanation = false;
@@ -392,8 +403,7 @@ function handleAIMark(q) {
       currentRecord.delegated = finalMark === ai.aiMark;
       currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
       results.push(currentRecord);
-      current++;
-      renderQuestion();
+      goToNextQuestion(q);
     };
   }
 }
@@ -415,7 +425,10 @@ function showPartSummary(part, final = false) {
   qContainer.classList.add("hidden");
   explanationDiv.classList.add("hidden");
 
-  const partResults = results.filter(r => r.part == part);
+  const partResults = results.filter(r => {
+    if (part === 2) return String(r.part).startsWith("2");
+    return String(r.part) === String(part);
+  });
   const rows = partResults
     .map(r => {
       const aiMark = r.aiMark !== undefined ? r.aiMark : "-";
@@ -451,6 +464,21 @@ function showPartSummary(part, final = false) {
   }
 }
 
+function showPart2bPrompt() {
+  qContainer.classList.add("hidden");
+  explanationDiv.classList.add("hidden");
+  summaryDiv.innerHTML = `<h2>Part 2a Complete</h2>`;
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "Start Part 2b";
+  nextBtn.onclick = () => {
+    summaryDiv.classList.add("hidden");
+    renderQuestion();
+  };
+  summaryDiv.appendChild(nextBtn);
+  summaryDiv.classList.remove("hidden");
+  typeset(summaryDiv);
+}
+
 function setupPart2(label) {
   const config = {
     L1: { order: ["part2a", "part2b"], types: { part2a: "staged", part2b: "summary" } },
@@ -458,8 +486,13 @@ function setupPart2(label) {
     L3: { order: ["part2b", "part2a"], types: { part2a: "staged", part2b: "summary" } },
     L4: { order: ["part2b", "part2a"], types: { part2a: "summary", part2b: "staged" } },
   }[label];
-  const build = name => questionDB[name].map(q => ({ ...q, part: 2, explanationType: config.types[name] }));
-  const newQs = config.order.flatMap(build);
+  const newQs = config.order.flatMap((name, idx) =>
+    questionDB[name].map(q => ({
+      ...q,
+      part: idx === 0 ? "2a" : "2b",
+      explanationType: config.types[name],
+    }))
+  );
   questions.push(...newQs);
   summaryDiv.classList.add("hidden");
   renderQuestion();
@@ -487,6 +520,7 @@ function updateTimer() {
 
 function endStudy() {
   if (timerInterval) clearInterval(timerInterval);
+  timerDiv.classList.add("hidden");
   showPartSummary(2, true);
 }
 
