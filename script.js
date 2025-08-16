@@ -129,7 +129,7 @@ async function loadQuestions() {
     }
     const db = await res.json();
     questionDB = { ...db, part1 };
-    questions = part1.map(q => ({ ...q, part: "1", explanationType: 'staged' }));
+    questions = part1.map(q => ({ ...q, part: "1", explanationType: 'both' }));
     dataLoaded = true;
   } catch (e) {
     console.error('Failed to load questions', e);
@@ -266,22 +266,36 @@ function handleSelfMark(q) {
       explanationDiv.innerHTML = `
           <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
           <p><strong>Confidence:</strong> ${ai.confidence}</p>
-          <button id="view-exp">View Explanation</button>
+          <button id="view-staged">View Staged Explanation</button>
+          <button id="view-summary">View Summary Explanation</button>
+          <div id="staged-exp" class="hidden"></div>
+          <div id="summary-exp" class="hidden"></div>
           <button id="next-q">Next</button>
           `;
       explanationDiv.classList.remove("hidden");
       typeset(explanationDiv);
-      let viewed = false;
-      document.getElementById("view-exp").onclick = () => {
-        currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
-        const exp = document.createElement("div");
-        exp.innerHTML = getExplanation(q);
-        explanationDiv.appendChild(exp);
+      let viewedStaged = false;
+      let viewedSummary = false;
+      document.getElementById("view-staged").onclick = () => {
+        currentRecord.actions.push({ action: "view_staged_explanation", time: Date.now() - questionStartTime });
+        const exp = document.getElementById("staged-exp");
+        exp.innerHTML = getExplanation(q, "staged");
+        exp.classList.remove("hidden");
         typeset(exp);
-        viewed = true;
+        viewedStaged = true;
+      };
+      document.getElementById("view-summary").onclick = () => {
+        currentRecord.actions.push({ action: "view_summary_explanation", time: Date.now() - questionStartTime });
+        const exp = document.getElementById("summary-exp");
+        exp.innerHTML = getExplanation(q, "summary");
+        exp.classList.remove("hidden");
+        typeset(exp);
+        viewedSummary = true;
       };
       document.getElementById("next-q").onclick = () => {
-        currentRecord.viewedExplanation = viewed;
+        currentRecord.viewedStagedExplanation = viewedStaged;
+        currentRecord.viewedSummaryExplanation = viewedSummary;
+        currentRecord.viewedExplanation = viewedStaged || viewedSummary;
         currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
         results.push(currentRecord);
         current++;
@@ -310,47 +324,91 @@ function handleAIMark(q) {
     <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
     <p><strong>Confidence:</strong> ${ai.confidence}</p>
     <label>Final mark: <input type="number" id="final-mark" min="0" max="${q.maxMarks}" value="${ai.aiMark}" /></label>
-    <button id="view-exp">View Explanation</button>
+    ${
+      q.part === "1"
+        ? `<button id="view-staged">View Staged Explanation</button>
+           <button id="view-summary">View Summary Explanation</button>`
+        : `<button id="view-exp">View Explanation</button>`
+    }
     <button id="submit-mark">Submit</button>
     `;
   typeset(qContainer);
+  if (q.part === "1") {
+    explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
+  }
   explanationDiv.classList.add("hidden");
   qContainer.classList.remove("hidden");
 
-  let viewedExplanation = false;
-  document.getElementById("view-exp").onclick = () => {
-    currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
-    explanationDiv.innerHTML = getExplanation(q);
-    explanationDiv.classList.remove("hidden");
-    viewedExplanation = true;
-    typeset(explanationDiv);
-  };
-
-  document.getElementById("submit-mark").onclick = () => {
-    currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
-    const finalMark = Number(document.getElementById("final-mark").value);
-    if (isNaN(finalMark)) return alert("Enter a mark");
-    currentRecord.viewedExplanation = viewedExplanation;
-    currentRecord.finalMark = finalMark;
-    currentRecord.delegated = finalMark === ai.aiMark;
-    currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
-    results.push(currentRecord);
-    current++;
-    renderQuestion();
-  };
+  if (q.part === "1") {
+    let viewedStaged = false;
+    let viewedSummary = false;
+    document.getElementById("view-staged").onclick = () => {
+      currentRecord.actions.push({ action: "view_staged_explanation", time: Date.now() - questionStartTime });
+      const exp = document.getElementById("staged-exp");
+      exp.innerHTML = getExplanation(q, "staged");
+      exp.classList.remove("hidden");
+      explanationDiv.classList.remove("hidden");
+      typeset(exp);
+      viewedStaged = true;
+    };
+    document.getElementById("view-summary").onclick = () => {
+      currentRecord.actions.push({ action: "view_summary_explanation", time: Date.now() - questionStartTime });
+      const exp = document.getElementById("summary-exp");
+      exp.innerHTML = getExplanation(q, "summary");
+      exp.classList.remove("hidden");
+      explanationDiv.classList.remove("hidden");
+      typeset(exp);
+      viewedSummary = true;
+    };
+    document.getElementById("submit-mark").onclick = () => {
+      currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
+      const finalMark = Number(document.getElementById("final-mark").value);
+      if (isNaN(finalMark)) return alert("Enter a mark");
+      currentRecord.viewedStagedExplanation = viewedStaged;
+      currentRecord.viewedSummaryExplanation = viewedSummary;
+      currentRecord.viewedExplanation = viewedStaged || viewedSummary;
+      currentRecord.finalMark = finalMark;
+      currentRecord.delegated = finalMark === ai.aiMark;
+      currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
+      results.push(currentRecord);
+      current++;
+      renderQuestion();
+    };
+  } else {
+    let viewedExplanation = false;
+    document.getElementById("view-exp").onclick = () => {
+      currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
+      explanationDiv.innerHTML = getExplanation(q);
+      explanationDiv.classList.remove("hidden");
+      viewedExplanation = true;
+      typeset(explanationDiv);
+    };
+    document.getElementById("submit-mark").onclick = () => {
+      currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
+      const finalMark = Number(document.getElementById("final-mark").value);
+      if (isNaN(finalMark)) return alert("Enter a mark");
+      currentRecord.viewedExplanation = viewedExplanation;
+      currentRecord.finalMark = finalMark;
+      currentRecord.delegated = finalMark === ai.aiMark;
+      currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
+      results.push(currentRecord);
+      current++;
+      renderQuestion();
+    };
+  }
 }
 
 function getAi(q) {
   return { aiMark: q.aiMark, confidence: q.aiConfidence };
 }
 
-function getExplanation(q) {
-  if (q.explanationType === "staged") {
-    const rubric = q.rubricJson ? `<pre>${escapeHTML(q.rubricJson)}</pre>` : "";
-    const guideline = q.markingGuideline ? `<pre>${escapeHTML(q.markingGuideline)}</pre>` : "";
-    return `<p>${formatText(q.stagedExplanation)}</p>${rubric}${guideline}`;
+function getExplanation(q, type = q.explanationType) {
+  if (type === "summary") {
+    return `<p>${formatText(q.summaryExplanation)}</p>`;
   }
-  return `<p>${formatText(q.summaryExplanation)}</p>`;
+  const rubric = q.rubricJson ? `<pre>${escapeHTML(q.rubricJson)}</pre>` : "";
+  const guideline = q.markingGuideline ? `<pre>${escapeHTML(q.markingGuideline)}</pre>` : "";
+  return `<p>${formatText(q.stagedExplanation)}</p>${rubric}${guideline}`;
 }
 
 function showPartSummary(part, final = false) {
