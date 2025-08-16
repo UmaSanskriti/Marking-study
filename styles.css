@@ -1,5 +1,22 @@
 body { font-family: Arial, sans-serif; margin: 2rem; }
 .hidden { display: none; }
 #timer { font-weight: bold; margin-bottom: 1rem; }
-#question-container { margin-top: 1rem; }
-#explanation-container { margin-top: 1rem; border-top: 1px solid #ccc; padding-top: 1rem; }
+#main {
+  display: flex;
+  gap: 2rem;
+}
+#question-container {
+  flex: 1;
+  margin-top: 1rem;
+}
+#action-container {
+  flex: 1;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+#explanation-container {
+  margin-top: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}

@@ -153,7 +153,9 @@ let selectedVariant = null;
 
 const intro = document.getElementById("intro");
 const timerDiv = document.getElementById("timer");
+const mainDiv = document.getElementById("main");
 const qContainer = document.getElementById("question-container");
+const ctaContainer = document.getElementById("cta-container");
 const explanationDiv = document.getElementById("explanation-container");
 const summaryDiv = document.getElementById("summary");
 const variantPicker = document.getElementById("variant-picker");
@@ -213,12 +215,16 @@ function renderQuestion() {
     <p><strong>Solution:</strong> ${formatText(q.solution)}</p>
     <p><strong>Student Answer:</strong> ${formatText(q.studentAnswer)}</p>
     <p><strong>Max Marks:</strong> ${q.maxMarks}</p>
+  `;
+  typeset(qContainer);
+
+  ctaContainer.innerHTML = `
     <button id="self-mark">Mark Myself</button>
     <button id="ai-mark">Use AI</button>
   `;
-  typeset(qContainer);
-  qContainer.classList.remove("hidden");
+  explanationDiv.innerHTML = "";
   explanationDiv.classList.add("hidden");
+  mainDiv.classList.remove("hidden");
 
   document.getElementById("self-mark").onclick = () => {
     currentRecord.actions.push({ action: "mark_myself", time: Date.now() - questionStartTime });
@@ -231,27 +237,14 @@ function renderQuestion() {
 }
 
 function handleSelfMark(q) {
-  const markInput = document.createElement("input");
-  markInput.type = "number";
-  markInput.min = 0;
-  markInput.max = q.maxMarks;
-  markInput.id = "mark-input";
-
-  qContainer.innerHTML = `
-    <h2>Question ${q.id} (Part ${q.part})</h2>
-    <p><strong>Question:</strong> ${formatText(q.question)}</p>
-    <p><strong>Solution:</strong> ${formatText(q.solution)}</p>
-    <p><strong>Student Answer:</strong> ${formatText(q.studentAnswer)}</p>
-    <p><strong>Max Marks:</strong> ${q.maxMarks}</p>
+  ctaContainer.innerHTML = `
     <p>Enter your mark:</p>
+    <input type="number" id="mark-input" min="0" max="${q.maxMarks}" />
+    <button id="submit-mark">Submit</button>
   `;
-  typeset(qContainer);
-  qContainer.appendChild(markInput);
-  const submitBtn = document.createElement("button");
-  submitBtn.textContent = "Submit";
-  qContainer.appendChild(submitBtn);
+  const markInput = document.getElementById("mark-input");
 
-  submitBtn.onclick = () => {
+  document.getElementById("submit-mark").onclick = () => {
     currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
     const mark = Number(markInput.value);
     if (isNaN(mark)) return alert("Enter a mark");
@@ -262,18 +255,15 @@ function handleSelfMark(q) {
       const ai = getAi(q);
       currentRecord.aiMark = ai.aiMark;
       currentRecord.aiConfidence = ai.confidence;
-      qContainer.classList.add("hidden");
-      explanationDiv.innerHTML = `
+      ctaContainer.innerHTML = `
           <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
           <p><strong>Confidence:</strong> ${ai.confidence}</p>
           <button id="view-staged">View Staged Explanation</button>
           <button id="view-summary">View Summary Explanation</button>
-          <div id="staged-exp" class="hidden"></div>
-          <div id="summary-exp" class="hidden"></div>
           <button id="next-q">Next</button>
           `;
-      explanationDiv.classList.remove("hidden");
-      typeset(explanationDiv);
+      explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
+      explanationDiv.classList.add("hidden");
       let viewedStaged = false;
       let viewedSummary = false;
       document.getElementById("view-staged").onclick = () => {
@@ -281,6 +271,7 @@ function handleSelfMark(q) {
         const exp = document.getElementById("staged-exp");
         exp.innerHTML = getExplanation(q, "staged");
         exp.classList.remove("hidden");
+        explanationDiv.classList.remove("hidden");
         typeset(exp);
         viewedStaged = true;
       };
@@ -289,6 +280,7 @@ function handleSelfMark(q) {
         const exp = document.getElementById("summary-exp");
         exp.innerHTML = getExplanation(q, "summary");
         exp.classList.remove("hidden");
+        explanationDiv.classList.remove("hidden");
         typeset(exp);
         viewedSummary = true;
       };
@@ -319,8 +311,7 @@ function handleAIMark(q) {
   currentRecord.aiMark = ai.aiMark;
   currentRecord.aiConfidence = ai.confidence;
 
-  qContainer.innerHTML = `
-    <h2>Question ${q.id} (Part ${q.part})</h2>
+  ctaContainer.innerHTML = `
     <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
     <p><strong>Confidence:</strong> ${ai.confidence}</p>
     <label>Final mark: <input type="number" id="final-mark" min="0" max="${q.maxMarks}" value="${ai.aiMark}" /></label>
@@ -332,14 +323,11 @@ function handleAIMark(q) {
     }
     <button id="submit-mark">Submit</button>
     `;
-  typeset(qContainer);
-  if (q.part === "1") {
-    explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
-  }
-  explanationDiv.classList.add("hidden");
-  qContainer.classList.remove("hidden");
+  typeset(ctaContainer);
 
   if (q.part === "1") {
+    explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
+    explanationDiv.classList.add("hidden");
     let viewedStaged = false;
     let viewedSummary = false;
     document.getElementById("view-staged").onclick = () => {
@@ -375,13 +363,14 @@ function handleAIMark(q) {
       renderQuestion();
     };
   } else {
+    explanationDiv.classList.add("hidden");
     let viewedExplanation = false;
     document.getElementById("view-exp").onclick = () => {
       currentRecord.actions.push({ action: "view_explanation", time: Date.now() - questionStartTime });
       explanationDiv.innerHTML = getExplanation(q);
       explanationDiv.classList.remove("hidden");
-      viewedExplanation = true;
       typeset(explanationDiv);
+      viewedExplanation = true;
     };
     document.getElementById("submit-mark").onclick = () => {
       currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
@@ -412,7 +401,7 @@ function getExplanation(q, type = q.explanationType) {
 }
 
 function showPartSummary(part, final = false) {
-  qContainer.classList.add("hidden");
+  mainDiv.classList.add("hidden");
   explanationDiv.classList.add("hidden");
 
   const partResults = results.filter(r => r.part == part);
