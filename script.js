@@ -278,25 +278,63 @@ function handleSelfMark(q) {
           `;
       explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
       explanationDiv.classList.add("hidden");
+      const stagedBtn = document.getElementById("view-staged");
+      const summaryBtn = document.getElementById("view-summary");
+      const stagedExp = document.getElementById("staged-exp");
+      const summaryExp = document.getElementById("summary-exp");
       let viewedStaged = false;
       let viewedSummary = false;
-      document.getElementById("view-staged").onclick = () => {
-        currentRecord.actions.push({ action: "view_staged_explanation", time: Date.now() - questionStartTime });
-        const exp = document.getElementById("staged-exp");
-        exp.innerHTML = getExplanation(q, "staged");
-        exp.classList.remove("hidden");
-        explanationDiv.classList.remove("hidden");
-        typeset(exp);
-        viewedStaged = true;
+      let stagedVisible = false;
+      let summaryVisible = false;
+
+      stagedBtn.onclick = () => {
+        const t = Date.now() - questionStartTime;
+        if (stagedVisible) {
+          currentRecord.actions.push({ action: "hide_staged_explanation", time: t });
+          stagedExp.classList.add("hidden");
+          stagedBtn.textContent = "View Staged Explanation";
+          stagedVisible = false;
+        } else {
+          currentRecord.actions.push({ action: "view_staged_explanation", time: t });
+          stagedExp.innerHTML = getExplanation(q, "staged");
+          stagedExp.classList.remove("hidden");
+          stagedBtn.textContent = "Hide Staged Explanation";
+          stagedVisible = true;
+          summaryExp.classList.add("hidden");
+          summaryBtn.textContent = "View Summary Explanation";
+          summaryVisible = false;
+          explanationDiv.classList.remove("hidden");
+          typeset(stagedExp);
+          viewedStaged = true;
+        }
+        if (!stagedVisible && !summaryVisible) {
+          explanationDiv.classList.add("hidden");
+        }
       };
-      document.getElementById("view-summary").onclick = () => {
-        currentRecord.actions.push({ action: "view_summary_explanation", time: Date.now() - questionStartTime });
-        const exp = document.getElementById("summary-exp");
-        exp.innerHTML = getExplanation(q, "summary");
-        exp.classList.remove("hidden");
-        explanationDiv.classList.remove("hidden");
-        typeset(exp);
-        viewedSummary = true;
+
+      summaryBtn.onclick = () => {
+        const t = Date.now() - questionStartTime;
+        if (summaryVisible) {
+          currentRecord.actions.push({ action: "hide_summary_explanation", time: t });
+          summaryExp.classList.add("hidden");
+          summaryBtn.textContent = "View Summary Explanation";
+          summaryVisible = false;
+        } else {
+          currentRecord.actions.push({ action: "view_summary_explanation", time: t });
+          summaryExp.innerHTML = getExplanation(q, "summary");
+          summaryExp.classList.remove("hidden");
+          summaryBtn.textContent = "Hide Summary Explanation";
+          summaryVisible = true;
+          stagedExp.classList.add("hidden");
+          stagedBtn.textContent = "View Staged Explanation";
+          stagedVisible = false;
+          explanationDiv.classList.remove("hidden");
+          typeset(summaryExp);
+          viewedSummary = true;
+        }
+        if (!stagedVisible && !summaryVisible) {
+          explanationDiv.classList.add("hidden");
+        }
       };
       document.getElementById("next-q").onclick = () => {
         currentRecord.viewedStagedExplanation = viewedStaged;
@@ -340,25 +378,63 @@ function handleAIMark(q) {
   if (q.part === "1") {
     explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
     explanationDiv.classList.add("hidden");
+    const stagedBtn = document.getElementById("view-staged");
+    const summaryBtn = document.getElementById("view-summary");
+    const stagedExp = document.getElementById("staged-exp");
+    const summaryExp = document.getElementById("summary-exp");
     let viewedStaged = false;
     let viewedSummary = false;
-    document.getElementById("view-staged").onclick = () => {
-      currentRecord.actions.push({ action: "view_staged_explanation", time: Date.now() - questionStartTime });
-      const exp = document.getElementById("staged-exp");
-      exp.innerHTML = getExplanation(q, "staged");
-      exp.classList.remove("hidden");
-      explanationDiv.classList.remove("hidden");
-      typeset(exp);
-      viewedStaged = true;
+    let stagedVisible = false;
+    let summaryVisible = false;
+
+    stagedBtn.onclick = () => {
+      const t = Date.now() - questionStartTime;
+      if (stagedVisible) {
+        currentRecord.actions.push({ action: "hide_staged_explanation", time: t });
+        stagedExp.classList.add("hidden");
+        stagedBtn.textContent = "View Staged Explanation";
+        stagedVisible = false;
+      } else {
+        currentRecord.actions.push({ action: "view_staged_explanation", time: t });
+        stagedExp.innerHTML = getExplanation(q, "staged");
+        stagedExp.classList.remove("hidden");
+        stagedBtn.textContent = "Hide Staged Explanation";
+        stagedVisible = true;
+        summaryExp.classList.add("hidden");
+        summaryBtn.textContent = "View Summary Explanation";
+        summaryVisible = false;
+        explanationDiv.classList.remove("hidden");
+        typeset(stagedExp);
+        viewedStaged = true;
+      }
+      if (!stagedVisible && !summaryVisible) {
+        explanationDiv.classList.add("hidden");
+      }
     };
-    document.getElementById("view-summary").onclick = () => {
-      currentRecord.actions.push({ action: "view_summary_explanation", time: Date.now() - questionStartTime });
-      const exp = document.getElementById("summary-exp");
-      exp.innerHTML = getExplanation(q, "summary");
-      exp.classList.remove("hidden");
-      explanationDiv.classList.remove("hidden");
-      typeset(exp);
-      viewedSummary = true;
+
+    summaryBtn.onclick = () => {
+      const t = Date.now() - questionStartTime;
+      if (summaryVisible) {
+        currentRecord.actions.push({ action: "hide_summary_explanation", time: t });
+        summaryExp.classList.add("hidden");
+        summaryBtn.textContent = "View Summary Explanation";
+        summaryVisible = false;
+      } else {
+        currentRecord.actions.push({ action: "view_summary_explanation", time: t });
+        summaryExp.innerHTML = getExplanation(q, "summary");
+        summaryExp.classList.remove("hidden");
+        summaryBtn.textContent = "Hide Summary Explanation";
+        summaryVisible = true;
+        stagedExp.classList.add("hidden");
+        stagedBtn.textContent = "View Staged Explanation";
+        stagedVisible = false;
+        explanationDiv.classList.remove("hidden");
+        typeset(summaryExp);
+        viewedSummary = true;
+      }
+      if (!stagedVisible && !summaryVisible) {
+        explanationDiv.classList.add("hidden");
+      }
     };
     document.getElementById("submit-mark").onclick = () => {
       currentRecord.actions.push({ action: "submit", time: Date.now() - questionStartTime });
