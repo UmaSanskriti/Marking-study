@@ -223,8 +223,9 @@ function renderQuestion() {
 
   ctaContainer.innerHTML = `
     <div class="action-card">
-      <button id="self-mark" class="primary-button">Mark Myself</button>
-      <button id="ai-mark" class="secondary-button">Use AI</button>
+      <p>Choose how you want to mark this question</p>
+      <button id="self-mark">Mark Myself</button>
+      <button id="ai-mark">Use AI</button>
     </div>
   `;
   explanationDiv.innerHTML = "";
