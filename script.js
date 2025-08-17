@@ -532,6 +532,7 @@ function showPartSummary(part, final = false) {
 }
 
 function showPart2bPrompt() {
+  mainDiv.classList.add("hidden");
   qContainer.classList.add("hidden");
   explanationDiv.classList.add("hidden");
   summaryDiv.innerHTML = `<h2>Part 2a Complete</h2>`;
