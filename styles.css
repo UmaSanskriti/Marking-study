@@ -6,11 +6,13 @@ body { font-family: Arial, sans-serif; margin: 2rem; }
   gap: 2rem;
 }
 #question-container {
-  flex: 1;
+  flex: 0 0 60%;
+  max-width: 60%;
   margin-top: 1rem;
 }
 #action-container {
-  flex: 1;
+  flex: 0 0 40%;
+  max-width: 40%;
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -19,4 +21,10 @@ body { font-family: Arial, sans-serif; margin: 2rem; }
   margin-top: 1rem;
   border-top: 1px solid #ccc;
   padding-top: 1rem;
+  overflow-y: auto;
+}
+#explanation-container pre {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  max-width: 100%;
 }
