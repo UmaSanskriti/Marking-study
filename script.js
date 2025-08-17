@@ -220,8 +220,10 @@ function renderQuestion() {
   typeset(qContainer);
 
   ctaContainer.innerHTML = `
-    <button id="self-mark">Mark Myself</button>
-    <button id="ai-mark">Use AI</button>
+    <div class="action-card">
+      <button id="self-mark" class="primary-button">Mark Myself</button>
+      <button id="ai-mark" class="secondary-button">Use AI</button>
+    </div>
   `;
   explanationDiv.innerHTML = "";
   explanationDiv.classList.add("hidden");
