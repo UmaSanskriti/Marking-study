@@ -209,7 +209,7 @@ function renderQuestion() {
     goldMark: q.correctMark ?? q.goldMark,
     actions: [],
   };
-
+  qContainer.classList.remove("hidden");
   qContainer.innerHTML = `
     <h2>Question ${q.id} (Part ${q.part})</h2>
     <p><strong>Question:</strong> ${formatText(q.question)}</p>
