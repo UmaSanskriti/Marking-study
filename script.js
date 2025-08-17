@@ -150,6 +150,8 @@ let questionStartTime;
 let currentRecord;
 let userName = "";
 let selectedVariant = null;
+let part2Boundary = null;
+let partOrder = [];
 
 const intro = document.getElementById("intro");
 const timerDiv = document.getElementById("timer");
@@ -239,14 +241,13 @@ function renderQuestion() {
   };
 }
 
-function goToNextQuestion(prevQ) {
+function goToNextQuestion() {
   current++;
-  const nextQ = questions[current];
-  if (prevQ.part === "2a" && nextQ && nextQ.part === "2b") {
+  if (part2Boundary !== null && current === part2Boundary) {
     if (timerInterval) clearInterval(timerInterval);
     timeLeft = 0;
     timerDiv.classList.add("hidden");
-    showPart2bPrompt();
+    showNextPartPrompt();
   } else {
     renderQuestion();
   }
@@ -344,7 +345,7 @@ function handleSelfMark(q) {
         currentRecord.viewedExplanation = viewedStaged || viewedSummary;
         currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
         results.push(currentRecord);
-        goToNextQuestion(q);
+        goToNextQuestion();
       };
     } else {
       const ai = getAi(q);
@@ -352,7 +353,7 @@ function handleSelfMark(q) {
       currentRecord.aiConfidence = ai.confidence;
       currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
       results.push(currentRecord);
-      goToNextQuestion(q);
+      goToNextQuestion();
     }
   };
 }
@@ -449,7 +450,7 @@ function handleAIMark(q) {
       currentRecord.delegated = finalMark === ai.aiMark;
       currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
       results.push(currentRecord);
-      goToNextQuestion(q);
+      goToNextQuestion();
     };
   } else {
     explanationDiv.classList.add("hidden");
@@ -470,7 +471,7 @@ function handleAIMark(q) {
       currentRecord.delegated = finalMark === ai.aiMark;
       currentRecord.timeTaken = (Date.now() - questionStartTime) / 1000;
       results.push(currentRecord);
-      goToNextQuestion(q);
+      goToNextQuestion();
     };
   }
 }
@@ -531,13 +532,15 @@ function showPartSummary(part, final = false) {
   }
 }
 
-function showPart2bPrompt() {
+function showNextPartPrompt() {
+  const currentPart = partOrder[0];
+  const nextPart = partOrder[1];
   mainDiv.classList.add("hidden");
   qContainer.classList.add("hidden");
   explanationDiv.classList.add("hidden");
-  summaryDiv.innerHTML = `<h2>Part 2a Complete</h2>`;
+  summaryDiv.innerHTML = `<h2>Part ${currentPart} Complete</h2>`;
   const nextBtn = document.createElement("button");
-  nextBtn.textContent = "Start Part 2b";
+  nextBtn.textContent = `Start Part ${nextPart}`;
   nextBtn.onclick = () => {
     summaryDiv.classList.add("hidden");
     renderQuestion();
@@ -554,10 +557,14 @@ function setupPart2(label) {
     L3: { order: ["part2b", "part2a"], types: { part2a: "staged", part2b: "summary" } },
     L4: { order: ["part2b", "part2a"], types: { part2a: "summary", part2b: "staged" } },
   }[label];
-  const newQs = config.order.flatMap((name, idx) =>
+  partOrder = config.order.map(name => (name === "part2a" ? "2a" : "2b"));
+  const firstPartName = config.order[0];
+  const firstPartLength = questionDB[firstPartName].length;
+  part2Boundary = questions.length + firstPartLength;
+  const newQs = config.order.flatMap(name =>
     questionDB[name].map(q => ({
       ...q,
-      part: idx === 0 ? "2a" : "2b",
+      part: name === "part2a" ? "2a" : "2b",
       explanationType: config.types[name],
     }))
   );
