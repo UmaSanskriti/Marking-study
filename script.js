@@ -162,6 +162,11 @@ const explanationDiv = document.getElementById("explanation-container");
 const summaryDiv = document.getElementById("summary");
 const variantPicker = document.getElementById("variant-picker");
 
+function setActionCard(innerHtml) {
+  ctaContainer.innerHTML = `<div class="action-card">${innerHtml}</div>`;
+  typeset(ctaContainer);
+}
+
 function typeset(element) {
   if (window.MathJax?.typesetPromise) {
     MathJax.typesetPromise(element ? [element] : undefined);
@@ -221,12 +226,11 @@ function renderQuestion() {
   `;
   typeset(qContainer);
 
-  ctaContainer.innerHTML = `
-    <div class="action-card">
-      <button id="self-mark" class="primary-button">Mark Myself</button>
-      <button id="ai-mark" class="secondary-button">Use AI</button>
-    </div>
-  `;
+  setActionCard(`
+      <p>Choose how you want to mark this question</p>
+      <button id="self-mark">Mark Myself</button>
+      <button id="ai-mark">Use AI</button>
+    `);
   explanationDiv.innerHTML = "";
   explanationDiv.classList.add("hidden");
   mainDiv.classList.remove("hidden");
@@ -254,11 +258,11 @@ function goToNextQuestion() {
 }
 
 function handleSelfMark(q) {
-  ctaContainer.innerHTML = `
+  setActionCard(`
     <p>Enter your mark:</p>
     <input type="number" id="mark-input" min="0" max="${q.maxMarks}" />
     <button id="submit-mark">Submit</button>
-  `;
+  `);
   const markInput = document.getElementById("mark-input");
 
   document.getElementById("submit-mark").onclick = () => {
@@ -272,13 +276,13 @@ function handleSelfMark(q) {
       const ai = getAi(q);
       currentRecord.aiMark = ai.aiMark;
       currentRecord.aiConfidence = ai.confidence;
-      ctaContainer.innerHTML = `
+      setActionCard(`
           <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
           <p><strong>Confidence:</strong> ${ai.confidence}</p>
           <button id="view-staged">View Staged Explanation</button>
           <button id="view-summary">View Summary Explanation</button>
           <button id="next-q">Next</button>
-          `;
+          `);
       explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
       explanationDiv.classList.add("hidden");
       const stagedBtn = document.getElementById("view-staged");
@@ -364,7 +368,7 @@ function handleAIMark(q) {
   currentRecord.aiMark = ai.aiMark;
   currentRecord.aiConfidence = ai.confidence;
 
-  ctaContainer.innerHTML = `
+  setActionCard(`
     <p><strong>AI Mark:</strong> ${ai.aiMark} / ${q.maxMarks}</p>
     <p><strong>Confidence:</strong> ${ai.confidence}</p>
     <label>Final mark: <input type="number" id="final-mark" min="0" max="${q.maxMarks}" value="${ai.aiMark}" /></label>
@@ -375,8 +379,7 @@ function handleAIMark(q) {
         : `<button id="view-exp">View Explanation</button>`
     }
     <button id="submit-mark">Submit</button>
-    `;
-  typeset(ctaContainer);
+    `);
 
   if (q.part === "1") {
     explanationDiv.innerHTML = `<div id="staged-exp" class="hidden"></div><div id="summary-exp" class="hidden"></div>`;
